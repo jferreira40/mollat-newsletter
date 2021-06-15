@@ -1,0 +1,30 @@
+header {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 0 !important;
+}
+main {
+  background-color: #ecf0f5 !important;
+  height: calc(100vh - 57px) !important;
+  /* substract header's height */
+}
+.content {
+  padding: 1rem;
+}
+.text-bleu-mollat {
+  color: #001689 !important;
+}
+.text-green {
+  color: greenyellow;
+}
+.btn-outline-mollat {
+  color: #001689 !important;
+  border-color: #001689 !important;
+}
+.btn-settings {
+  border: none !important;
+}
+.fa-cogs {
+  font-size: 1.6rem;
+}
+/*# sourceMappingURL=styles.css.map */
