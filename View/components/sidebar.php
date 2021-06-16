@@ -62,7 +62,7 @@ function active($currect_page){
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownNews">
                     <li><a class="dropdown-item" href="<?php echo ROOT ?>newsletter">Gestion</a></li>
-                    <li><a class="dropdown-item" href="<?php echo ROOT ?>newsletter/templates/all">Templates</a></li>
+                    <li><a class="dropdown-item" href="<?php echo ROOT ?>templates">Templates</a></li>
                     <li><a class="dropdown-item" href="<?php echo ROOT ?>newsletter/journal">Journal d'envoi</a></li>
                 </ul>
             </div>
