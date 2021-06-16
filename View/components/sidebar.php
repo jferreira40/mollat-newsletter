@@ -1,4 +1,8 @@
 <?php
+if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === 'www.localhost') {
+    $BASE_DIR = 'http://www.localhost:8888' . $_SERVER['REQUEST_URI'];
+}
+else $BASE_DIR = 'https://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 
 function active($currect_page){
     $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
@@ -9,7 +13,7 @@ function active($currect_page){
 ?>
 
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 260px;">
-    <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <a href="<?php echo $BASE_DIR ?>" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <img src="https://avatars.githubusercontent.com/u/23724953?s=200&v=4" alt="" width="32" height="32" class="rounded-circle me-2">
         <div class="d-flex flex-column">
             <strong>ecv@mollat-adm.com</strong>
@@ -21,7 +25,7 @@ function active($currect_page){
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="index.php" class="nav-link <?php active('index.php');?>" aria-current="page">
+            <a href="<?php echo $BASE_DIR ?>" class="nav-link <?php active('index.php');?>" aria-current="page">
                 <i class="fas fa-home"></i>&nbsp;
                 Accueil
             </a>
@@ -50,11 +54,19 @@ function active($currect_page){
                 Gestion des pages
             </a>
         </li>
-        <li>
-            <a href="newsletter.php" class="nav-link text-white <?php active('newsletter.php');?>">
-                <i class="fas fa-newspaper"></i>&nbsp;
-                Newsletter
-            </a>
+        <li class="ml-4">
+            <div class="dropdown">
+                <a href="#" class="nav-link <?php active('newsletter.php');?> d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownNews" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-newspaper"></i>&nbsp;
+                    Newsletters
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownNews">
+                    <li><a class="dropdown-item" href="<?php echo ROOT ?>newsletter">Gestion</a></li>
+                    <li><a class="dropdown-item" href="<?php echo ROOT ?>newsletter/edit">Edition</a></li>
+                    <li><a class="dropdown-item" href="<?php echo ROOT ?>newsletter/all">Templates</a></li>
+                    <li><a class="dropdown-item" href="<?php echo ROOT ?>newsletter/journal">Journal d'envoi</a></li>
+                </ul>
+            </div>
         </li>
         <li class="ml-4">
             <div class="dropdown">
