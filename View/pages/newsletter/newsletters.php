@@ -1,13 +1,27 @@
 <div class="content d-flex flex-column w-100 p-4">
     <h2>Gestion des newsletters</h2>
     <div class="listNews">
-        <ul>
+        <table class="table table-light">
+            <thead>
+            <th>ID</th>
+            <th>Title</th>
+            <th></th>
+            <th></th>
+            </thead>
+
+            <tbody>
             <?php
             foreach ($news as $newsletter) {
                 $link = ROOT.'newsletter/edit?id='.$newsletter['id'];
-                echo "<li><a href='$link'>".$newsletter['title']."</a></li>";
+                echo "<tr>";
+                echo "<td>".$newsletter['id']."</td>";
+                echo "<td>".$newsletter['title']."</td>";
+                echo "<td><a href='$link' class='btn'><i class='fas fa-pen-square'></i></a></td>";
+                echo "<td><button class='btn'><i class='fas fa-trash'></i></button></td>";
+                echo "</tr>";
             }
             ?>
-        </ul>
+            </tbody>
+        </table>
     </div>
 </div>
