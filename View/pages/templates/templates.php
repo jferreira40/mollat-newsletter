@@ -1,10 +1,13 @@
 <div class="content d-flex flex-column w-100 p-4">
     <h2>Gestion des templates</h2>
-    <div class="listNews">
+    <div class="mt-4">
+        <button class="btn btn-info float-end"><i class="fas fa-plus mr-2"></i>  Nouveau template</button>
+    </div>
+    <div class="listNews mt-2">
         <table class="table table-light">
             <thead>
             <th>ID</th>
-            <th>Name</th>
+            <th>Nom</th>
             <th></th>
             <th></th>
             </thead>
