@@ -11,11 +11,12 @@
 
             <tbody>
             <?php
-            foreach ($_POST['news'] as $newsletter) {
+            foreach ($news as $newsletter) {
+                $link = ROOT.'newsletter/edit?id='.$newsletter['id'];
                 echo "<tr>";
-                echo "<td>$newsletter[id]</td>";
-                echo "<td>$newsletter[title]</td>";
-                echo "<td><button class='btn'><i class='fas fa-pen-square'></i></button></td>";
+                echo "<td>".$newsletter['id']."</td>";
+                echo "<td>".$newsletter['title']."</td>";
+                echo "<td><a href='$link' class='btn'><i class='fas fa-pen-square'></i></a></td>";
                 echo "<td><button class='btn'><i class='fas fa-trash'></i></button></td>";
                 echo "</tr>";
             }

@@ -1,18 +1,21 @@
 <?php
 
 require_once('app/Controller.php');
+require_once('app/Model.php');
 require_once('Model/Newsletter.php');
 
 class NewsletterController extends Controller {
     public function index() {
-        $News = new Newsletter();
-        $AllNews = $News->getAll();
+        $Newsletter = new Newsletter();
+        $news = $Newsletter->getAll();
 
-        $_POST['news'] = $AllNews;
-        return ('View/pages/newsletter/newsletters.php');
+        return $this->render('newsletters', compact('news'));
     }
 
     public function edit() {
-        return ('View/pages/newsletter/newsletter.php');
+        $Newsletter = new Newsletter(1);
+        $news = $Newsletter->getOne();
+
+        return $this->render('newsletter', compact('news'));
     }
 }

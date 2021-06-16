@@ -1,9 +1,14 @@
 <?php
 
+namespace app;
+
+use PDO;
+use PDOException;
+
 abstract class Model {
     // Informations de la base de données
     private $host = "localhost";
-    private $db_name = "mollat";
+    private $db_name = "mollat2";
     private $username = "root";
     private $password = "root";
 
@@ -30,5 +35,29 @@ abstract class Model {
         }catch(PDOException $exception){
             echo "Erreur de connexion : " . $exception->getMessage();
         }
+    }
+
+    /**
+     * Méthode permettant d'obtenir un enregistrement de la table choisie en fonction d'un id
+     *
+     * @return void
+     */
+    public function getOne(){
+        $sql = "SELECT * FROM ".$this->table." WHERE id=".$this->id;
+        $query = $this->_connexion->prepare($sql);
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Méthode permettant d'obtenir tous les enregistrements de la table choisie
+     *
+     * @return void
+     */
+    public function getAll(){
+        $sql = "SELECT * FROM ".$this->table;
+        $query = $this->_connexion->prepare($sql);
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 }
