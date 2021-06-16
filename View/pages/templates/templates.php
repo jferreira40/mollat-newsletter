@@ -11,7 +11,7 @@
 
             <tbody>
             <?php
-            foreach ($_POST['templates'] as $template) {
+            foreach ($templates as $template) {
                 echo "<tr>";
                 echo "<td>$template[id]</td>";
                 echo "<td>$template[name]</td>";

@@ -8,7 +8,7 @@ use PDOException;
 abstract class Model {
     // Informations de la base de données
     private $host = "localhost";
-    private $db_name = "mollat2";
+    private $db_name = "mollat";
     private $username = "root";
     private $password = "root";
 
