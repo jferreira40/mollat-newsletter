@@ -15,12 +15,13 @@
             <tbody>
             <?php
             foreach ($news as $newsletter) {
-                $link = ROOT.'newsletter/edit?id='.$newsletter['id'];
+                $link_edit = ROOT.'newsletter/show/'.$newsletter['id'];
+                $link_destroy = ROOT.'newsletter/destroy/'.$newsletter['id'];
                 echo "<tr>";
                 echo "<td>".$newsletter['id']."</td>";
                 echo "<td>".$newsletter['title']."</td>";
-                echo "<td><a href='$link' class='btn'><i class='fas fa-pen-square'></i></a></td>";
-                echo "<td><button class='btn'><i class='fas fa-trash'></i></button></td>";
+                echo "<td><a href='$link_edit' class='btn'><i class='fas fa-pen-square'></i></a></td>";
+                echo "<td><a href='$link_destroy' class='btn'><i class='fas fa-trash'></i></a></td>";
                 echo "</tr>";
             }
             ?>

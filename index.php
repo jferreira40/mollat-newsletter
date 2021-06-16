@@ -27,7 +27,10 @@ if($params[0] != "") {
     $controller = new $controller();
 
     if (method_exists($controller, $action)){
-        $Content = $controller->$action();
+        // On supprime les 2 premiers paramètres
+        unset($params[0]);
+        unset($params[1]);
+        $Content = call_user_func_array([$controller,$action], $params);;
         $_SESSION['data'] = extract($Content['data']);
     } else {
         http_response_code(404);

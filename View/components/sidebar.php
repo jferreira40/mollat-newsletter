@@ -5,9 +5,9 @@ if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === 'www.
 else $BASE_DIR = 'https://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 
 function active($currect_page){
-    $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
-    $url = end($url_array);
-    if($currect_page == $url) echo 'active';
+    $url_array =  explode('/', $_SERVER['REQUEST_URI']);
+    $url = $url_array[2];
+    if(in_array($url, $currect_page)) echo 'active';
     else echo 'text-white';
 }
 ?>
@@ -25,7 +25,7 @@ function active($currect_page){
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="<?php echo ROOT ?>" class="nav-link <?php active('index.php');?>" aria-current="page">
+            <a href="<?php echo ROOT ?>" class="nav-link <?php active(['']); ?>" aria-current="page">
                 <i class="fas fa-home"></i>&nbsp;
                 Accueil
             </a>
@@ -56,14 +56,15 @@ function active($currect_page){
         </li>
         <li class="ml-4">
             <div class="dropdown">
-                <a href="#" class="nav-link <?php active('newsletter.php');?> d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownNews" data-bs-toggle="dropdown" aria-expanded="false">
+                <a href="#" class="nav-link <?php active(['newsletter', 'templates', 'journal']) ?> d-flex
+                align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownNews" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-newspaper"></i>&nbsp;
                     Newsletters
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownNews">
-                    <li><a class="dropdown-item" href="<?php echo ROOT ?>newsletter">Gestion</a></li>
-                    <li><a class="dropdown-item" href="<?php echo ROOT ?>templates">Templates</a></li>
-                    <li><a class="dropdown-item" href="<?php echo ROOT ?>newsletter/journal">Journal d'envoi</a></li>
+                    <li><a class="dropdown-item <?php active(['newsletter']); ?>" href="<?php echo ROOT ?>newsletter">Gestion</a></li>
+                    <li><a class="dropdown-item <?php active(['templates']); ?>" href="<?php echo ROOT ?>templates">Templates</a></li>
+                    <li><a class="dropdown-item <?php active(['journal']); ?>" href="<?php echo ROOT ?>journal">Journal d'envoi</a></li>
                 </ul>
             </div>
         </li>

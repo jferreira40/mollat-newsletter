@@ -12,10 +12,17 @@ class NewsletterController extends Controller {
         return $this->render('newsletters', compact('news'));
     }
 
-    public function edit() {
-        $Newsletter = new Newsletter(1);
+    public function show(int $id) {
+        $Newsletter = new Newsletter($id);
         $news = $Newsletter->getOne();
 
         return $this->render('newsletter', compact('news'));
+    }
+
+    public function destroy (int $id) {
+        $Newsletter = new Newsletter($id);
+        $news = $Newsletter->destroy();
+
+        header("Location: ".ROOT.'newsletter');
     }
 }

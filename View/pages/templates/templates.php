@@ -15,11 +15,13 @@
             <tbody>
             <?php
             foreach ($templates as $template) {
+                $link_edit = ROOT.'templates/show/'.$template['id'];
+                $link_destroy = ROOT.'templates/destroy/'.$template['id'];
                 echo "<tr>";
                 echo "<td>$template[id]</td>";
                 echo "<td>$template[name]</td>";
-                echo "<td><button class='btn'><i class='fas fa-pen-square'></i></button></td>";
-                echo "<td><button class='btn'><i class='fas fa-trash'></i></button></td>";
+                echo "<td><a href='$link_edit' class='btn'><i class='fas fa-pen-square'></i></a></td>";
+                echo "<td><a href='$link_destroy' class='btn'><i class='fas fa-trash'></i></></td>";
                 echo "</tr>";
             }
             ?>
