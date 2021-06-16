@@ -1,4 +1,7 @@
 <?php
+session_start();
+$_SESSION['test'] = 'test';
+
 if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === 'www.localhost') {
     $BASE_DIR = 'localhost:8888';
 } else $BASE_DIR = 'https://'.$_SERVER['SERVER_NAME'];
@@ -23,11 +26,13 @@ if($params[0] != "") {
     // On instancie le contrôleur
     $controller = new $controller();
 
-    if(method_exists($controller, $action)){
-        // On appelle la méthode
-        $Content = $controller->$action();
-    }else{
-        // On envoie le code réponse 404
+    if (method_exists($controller, $action)){
+        // On supprime les 2 premiers paramètres
+        unset($params[0]);
+        unset($params[1]);
+        $Content = call_user_func_array([$controller,$action], $params);;
+        $_SESSION['data'] = extract($Content['data']);
+    } else {
         http_response_code(404);
         echo "La page recherchée n'existe pas";
     }
@@ -40,9 +45,11 @@ if($params[0] != "") {
     $controller = new Main(); */
 
     // On appelle la méthode index
-    $Content = ('View/pages/home.php');
+    $Content = [
+        'file' => ('View/pages/home.php'),
+        'data' => []
+    ];
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +76,7 @@ if($params[0] != "") {
         <?php include 'View/components/header.php' ?>
         <main class="d-flex">
             <?php include 'View/components/sidebar.php' ?>
-            <?php include $Content ?>
+            <?php include $Content['file'] ?>
         </main>
     </div>
 
