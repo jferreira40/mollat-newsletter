@@ -19,6 +19,17 @@ class NewsletterController extends Controller {
         return $this->render('newsletter', compact('news'));
     }
 
+    public function replicate(int $id) {
+        $Newsletter = new Newsletter($id);
+        $newNewsID = $Newsletter->replicate();
+
+        /* $newNews = new Newsletter($newNewsID);
+        $news = $newNews->getOne();
+        return $this->render('newsletter', compact('news')); */
+
+        header("Location: ".ROOT.'newsletter');
+    }
+
     public function destroy (int $id) {
         $Newsletter = new Newsletter($id);
         $news = $Newsletter->destroy();
