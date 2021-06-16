@@ -2,9 +2,11 @@
     <h2>Gestion des newsletters</h2>
     <div class="listNews">
         <ul>
-            <li>News 1</li>
-            <li>News 2</li>
-            <li>...</li>
+            <?php
+            foreach ($_POST['news'] as $newsletter) {
+                echo "<li>$newsletter</li>";
+            }
+            ?>
         </ul>
     </div>
 </div>
