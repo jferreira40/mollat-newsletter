@@ -3,8 +3,9 @@
     <div class="listNews">
         <ul>
             <?php
-            foreach ($_POST['news'] as $newsletter) {
-                echo "<li>$newsletter</li>";
+            foreach ($news as $newsletter) {
+                $link = ROOT.'newsletter/edit?id='.$newsletter['id'];
+                echo "<li><a href='$link'>".$newsletter['title']."</a></li>";
             }
             ?>
         </ul>
