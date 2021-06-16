@@ -40,7 +40,7 @@ if($params[0] != "") {
     $controller = new Main(); */
 
     // On appelle la méthode index
-    $Content = 'Home.';
+    $Content = ('View/pages/home.php');
 }
 
 ?>

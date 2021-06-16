@@ -13,7 +13,7 @@ function active($currect_page){
 ?>
 
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 260px;">
-    <a href="<?php echo $BASE_DIR ?>" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <a href="<?php echo ROOT ?>" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <img src="https://avatars.githubusercontent.com/u/23724953?s=200&v=4" alt="" width="32" height="32" class="rounded-circle me-2">
         <div class="d-flex flex-column">
             <strong>ecv@mollat-adm.com</strong>
@@ -25,7 +25,7 @@ function active($currect_page){
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="<?php echo $BASE_DIR ?>" class="nav-link <?php active('index.php');?>" aria-current="page">
+            <a href="<?php echo ROOT ?>" class="nav-link <?php active('index.php');?>" aria-current="page">
                 <i class="fas fa-home"></i>&nbsp;
                 Accueil
             </a>
