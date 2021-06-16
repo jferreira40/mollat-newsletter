@@ -12,10 +12,17 @@ class TemplatesController extends Controller {
         return $this->render('templates', compact('templates'));
     }
 
-    public function edit() {
-        $Templates = new Template(1);
+    public function show(int $id) {
+        $Templates = new Template($id);
         $template = $Templates->getOne();
 
-        return $this->render('templates', compact('template'));
+        return $this->render('template', compact('template'));
+    }
+
+    public function destroy (int $id) {
+        $Templates = new Template($id);
+        $template = $Templates->destroy();
+
+        header("Location: ".ROOT.'templates');
     }
 }
