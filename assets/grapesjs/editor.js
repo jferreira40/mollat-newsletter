@@ -11,11 +11,10 @@ const editor = grapesjs.init({
   // storageManager: false,
 })
 
-async function mollatParseLatestFavorites () {
-  const response = await fetch('https://www.mollat.com/Nova/GetPostsByEAN/9782364684072')
-  const result = await response.json()
+import mockedData from './mocked-data'
 
-  const parsedResult = result.map(({ title, seo, media }) => {
+async function mollatParseLatestFavorites () {
+  const parsedResult = mockedData.map(({ title, seo, media }) => {
     return {
       title,
       seo,
@@ -33,17 +32,18 @@ async function domReadyFavorites () {
   const parsedFavorites = await mollatParseLatestFavorites()
   const sectionItem = document.createElement('mj-section')
 
-  parsedFavorites.forEach(({ title, seo, mediaUrl, mediaAlt }) => {
+  parsedFavorites.forEach(async ({ title, seo, mediaUrl, mediaAlt }) => {
     const linkItem = document.createElement('a')
     linkItem.href = seo
 
     const titleItem = document.createElement('mj-text')
     titleItem.textContent = title
 
-    const imageItem = document.createElement('mj-image')
+    const imageItem = document.createElement('img')
 
-    imageItem.src = mediaUrl
+    imageItem.src = 'data:image/jpeg;base64,' + mediaUrl
     imageItem.alt = mediaAlt
+    imageItem.style.width = "100%"
 
     linkItem.append(titleItem, imageItem)
 
@@ -60,7 +60,10 @@ function paintFavorites (content) {
 
   blockManager.add('Nos coups de coeur', {
     label: 'Coups de coeur',
-    content
+    content,
+    attributes: {
+      class: 'fa fa-heart'
+    }
   })
 }
 
