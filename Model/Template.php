@@ -16,6 +16,38 @@ class Template extends Model
         $this->getConnection();
     }
 
+    public function update ($data) {
+        $sql = "UPDATE ".$this->table." SET name=:name, content=:content WHERE id=".$this->id;
+        $query = $this->_connexion->prepare($sql);
+        $query->bindParam(':name', $data['name']);
+        $query->bindParam(':content', $data['content']);
+        $query->execute();
+        return $query->rowCount();
+    }
+
+    public function store ($data) {
+        $sql = "INSERT INTO ".$this->table." (name, content) VALUES (:name, :content)";
+        $query = $this->_connexion->prepare($sql);
+        $query->bindParam(':name', $data['name']);
+        $query->bindParam(':content',  $data['content']);
+        $query->execute();
+
+        return $this->_connexion->lastInsertId();
+    }
+
+    public function replicate () {
+        $TemplateReference = $this->getOne();
+        $newName = $TemplateReference['name'].' (copie)';
+        $newContent = $TemplateReference['content'];
+        $sql = "INSERT INTO ".$this->table." (name, content) VALUES (:name, :content)";
+        $query = $this->_connexion->prepare($sql);
+        $query->bindParam(':name', $newName);
+        $query->bindParam(':content', $newContent);
+        $query->execute();
+
+        return $this->_connexion->lastInsertId();
+    }
+
     public function destroy () {
         $sql = "DELETE FROM ".$this->table." WHERE id=".$this->id;
         $query = $this->_connexion->prepare($sql);

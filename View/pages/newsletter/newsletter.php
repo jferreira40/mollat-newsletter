@@ -67,7 +67,7 @@
                 </mj-column></mj-section></mj-body></mjml>
             </div>
             <div class="col-12 mt-2 text-end">
-                <button id="save_newsletter" type="submit" class="btn btn-success">Enregistrer</button>
+                <button id="save_new_newsletter" type="submit" class="btn btn-success">Enregistrer</button>
             </div>
         </form>
     <?php endif; ?>
@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
             editor.setComponents(selectedTemplate.content)
         } else alert('Merci de sélectionner un template.')
     });
+    <?php if(isset($news) && $news['content']) : ?>
     document.getElementById('save_newsletter').addEventListener('click', (e) => {
         e.preventDefault()
         const rootPath = <?php echo json_encode(ROOT) ?>;
@@ -102,5 +103,24 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((response) => response.json())
             .then((res) => window.location.reload(false));
     });
+    <?php else : ?>
+    document.getElementById('save_new_newsletter').addEventListener('click', (e) => {
+        e.preventDefault()
+        const rootPath = <?php echo json_encode(ROOT) ?>;
+        const newsTitle = document.getElementById('news_title').value
+        const newsContent = editor.getHtml()
+
+        let formData = new FormData();
+        formData.append('title', newsTitle);
+        formData.append('content', newsContent);
+
+        fetch(`${rootPath}newsletter/store`, {
+                body: formData,
+                method: "post"
+            })
+            .then((response) => response.json())
+            .then((res) => window.location.href=rootPath+"newsletter/show/"+res.data);
+    });
+    <?php endif ?>
 });
 </script>

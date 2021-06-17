@@ -9,8 +9,6 @@
             <th>ID</th>
             <th>Titre</th>
             <th></th>
-            <th></th>
-            <th></th>
             </thead>
 
             <tbody>
@@ -22,9 +20,9 @@
                 echo "<tr>";
                 echo "<td>".$newsletter['id']."</td>";
                 echo "<td>".$newsletter['title']."</td>";
-                echo "<td><a href='$link_edit' class='btn'><i class='fas fa-pen-square'></i></a></td>";
-                echo "<td><a href='$link_replicate' class='btn'><i class='fas fa-copy'></i></a></td>";
-                echo "<td><a href='$link_destroy' class='btn'><i class='fas fa-trash'></i></a></td>";
+                echo "<td class='text-end'><a href='$link_edit' class='btn'><i class='fas fa-pen-square'></i></a>";
+                echo "<a href='$link_replicate' class='btn'><i class='fas fa-copy'></i></a>";
+                echo "<a href='$link_destroy' class='btn'><i class='fas fa-trash'></i></a></td>";
                 echo "</tr>";
             }
             ?>
