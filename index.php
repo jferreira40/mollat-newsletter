@@ -1,9 +1,10 @@
 <?php
 session_start();
-$_SESSION['test'] = 'test';
+
+include_once '_env.php';
 
 if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === 'www.localhost') {
-    $BASE_DIR = 'localhost:8888';
+    $BASE_DIR = "$HOST";
 } else $BASE_DIR = 'https://'.$_SERVER['SERVER_NAME'];
 
 // On génère une constante contenant le chemin vers la racine publique du projet
