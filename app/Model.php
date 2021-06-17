@@ -6,12 +6,6 @@ use PDO;
 use PDOException;
 
 abstract class Model {
-    // Informations de la base de données
-    private $host = "localhost";
-    private $db_name = "mollat";
-    private $username = "root";
-    private $password = "root";
-
     // Propriété qui contiendra l'instance de la connexion
     protected $_connexion;
 
@@ -25,12 +19,14 @@ abstract class Model {
      * @return void
      */
     public function getConnection(){
+        include '_env.php';
+
         // On supprime la connexion précédente
         $this->_connexion = null;
 
         // On essaie de se connecter à la base
         try{
-            $this->_connexion = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->_connexion = new PDO("mysql:host=" . $DB_HOST . ";dbname=" . $DB_NAME, $DB_USER, $DB_PASSWORD);
             $this->_connexion->exec("set names utf8");
         }catch(PDOException $exception){
             echo "Erreur de connexion : " . $exception->getMessage();
