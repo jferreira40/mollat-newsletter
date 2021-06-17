@@ -3,7 +3,7 @@ session_start();
 $_SESSION['test'] = 'test';
 
 if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === 'www.localhost') {
-    $BASE_DIR = 'localhost:8888';
+    $BASE_DIR = 'localhost';
 } else $BASE_DIR = 'https://'.$_SERVER['SERVER_NAME'];
 
 // On génère une constante contenant le chemin vers la racine publique du projet
@@ -63,6 +63,7 @@ if($params[0] != "") {
     <link rel="stylesheet" href="<?php echo ROOT ?>assets/css/sidebars.css">
     <link rel="stylesheet" type="text/css" href="<?php echo ROOT ?>assets/css/styles.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo ROOT ?>assets/css/editor.css" />
+    <link rel="shortcut icon" type="image/jpg" href="<?php echo ROOT ?>assets/images/favicon.ico"/>
     <script src="<?php echo ROOT ?>assets/js/sidebars.js"></script>
 
     <!-- GrapesJS import -->
