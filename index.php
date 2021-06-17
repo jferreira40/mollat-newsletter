@@ -3,7 +3,7 @@ session_start();
 $_SESSION['test'] = 'test';
 
 if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === 'www.localhost') {
-    $BASE_DIR = 'localhost';
+    $BASE_DIR = 'localhost:8888';
 } else $BASE_DIR = 'https://'.$_SERVER['SERVER_NAME'];
 
 // On génère une constante contenant le chemin vers la racine publique du projet
@@ -30,7 +30,7 @@ if($params[0] != "") {
         // On supprime les 2 premiers paramètres
         unset($params[0]);
         unset($params[1]);
-        $Content = call_user_func_array([$controller,$action], $params);;
+        $Content = call_user_func_array([$controller,$action], $params);
         $_SESSION['data'] = extract($Content['data']);
     } else {
         http_response_code(404);

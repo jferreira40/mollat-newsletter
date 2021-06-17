@@ -1,8 +1,12 @@
 <?php
 
+use Model\Newsletter;
+use Model\Template;
+
 require_once('app/Controller.php');
 require_once('app/Model.php');
 require_once('Model/Newsletter.php');
+require_once('Model/Template.php');
 
 class NewsletterController extends Controller {
     public function index() {
@@ -16,7 +20,19 @@ class NewsletterController extends Controller {
         $Newsletter = new Newsletter($id);
         $news = $Newsletter->getOne();
 
-        return $this->render('newsletter', compact('news'));
+        $Template = new Template();
+        $templates = $Template->getAll();
+
+        $data = ['news' => $news, 'templates' => $templates];
+        return $this->render('newsletter', compact('data'));
+    }
+
+    public function create () {
+        $Template = new Template();
+        $templates = $Template->getAll();
+
+        $data = ['templates' => $templates];
+        return $this->render('newsletter', compact('data'));
     }
 
     public function replicate(int $id) {

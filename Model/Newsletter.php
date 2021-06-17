@@ -1,5 +1,7 @@
 <?php
 
+namespace Model;
+
 use app\Model;
 
 class Newsletter extends Model

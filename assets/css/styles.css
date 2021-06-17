@@ -10,6 +10,7 @@ main {
 }
 .content {
   padding: 1rem;
+  overflow: auto;
 }
 .text-bleu-mollat {
   color: #001689 !important;
