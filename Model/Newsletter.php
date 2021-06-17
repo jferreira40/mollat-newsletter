@@ -16,9 +16,16 @@ class Newsletter extends Model
         $this->getConnection();
     }
 
+    public function update ($data) {
+        $sql = "UPDATE ".$this->table." SET title=:title, content=:content WHERE id=".$this->id;
+        $query = $this->_connexion->prepare($sql);
+        $query->bindParam(':title', $data['title']);
+        $query->bindParam(':content', $data['content']);
+        $query->execute();
+        return $query->rowCount();
+    }
+
     public function store ($Model) {
-        var_dump($Model);
-        die();
         $sql = "INSERT INTO ".$this->table." WHERE id=".$this->id;
         $query = $this->_connexion->prepare($sql);
         $query->execute();

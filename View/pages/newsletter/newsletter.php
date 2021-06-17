@@ -1,5 +1,7 @@
 <div class="content d-flex flex-column w-100 p-4">
-    <a href="<?php echo ROOT ?>newsletter" class="text-decoration-none mb-3"><i class="fas fa-arrow-left"></i> Retour</a>
+    <a href="<?php echo ROOT ?>newsletter" class="text-decoration-none mb-3">
+        <i class="fas fa-arrow-left"></i> Retour
+    </a>
     <?php if(isset($news) && $news['content']) : ?>
         <h2>Éditer la newsletter</h2>
         <form role="form">
@@ -8,6 +10,7 @@
                     <span class="input-group-text" id="input_news_title">Titre</span>
                     <input
                         type="text"
+                        id="news_title"
                         name="news_title"
                         placeholder="<?php echo $news['title'] ?>" value="<?php echo $news['title'] ?>"
                         class="form-control"
@@ -41,6 +44,7 @@
                     <input
                         type="text"
                         name="news_title"
+                        id="news_title"
                         placeholder="Titre de la newsletter"
                         class="form-control"
                         aria-label="Titre de la news"
@@ -82,7 +86,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     document.getElementById('save_newsletter').addEventListener('click', (e) => {
         e.preventDefault()
-        alert('Update Newsletter')
+        const rootPath = <?php echo json_encode(ROOT) ?>;
+        const newsID = <?php echo $news['id'] ?>;
+        const newsTitle = document.getElementById('news_title').value
+        const newsContent = editor.getHtml()
+
+        let formData = new FormData();
+        formData.append('title', newsTitle);
+        formData.append('content', newsContent);
+
+        fetch(`${rootPath}newsletter/update/${newsID}`, {
+                body: formData,
+                method: "post"
+            })
+            .then((response) => response.json())
+            .then((res) => window.location.reload(false));
     });
 });
 </script>

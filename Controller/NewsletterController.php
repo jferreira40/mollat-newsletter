@@ -35,6 +35,23 @@ class NewsletterController extends Controller {
         return $this->render('newsletter', compact('data'));
     }
 
+    public function store () {
+        var_dump($_POST);
+        die();
+        echo json_encode(['data' => 1]);
+        die(); // die() nécessaire pour éviter d'être redirigé par le routeur
+    }
+
+    public function update (int $id) {
+        $updatedData = $_POST;
+        $updatedData['content'] = preg_replace( "/\r|\n/", "", $updatedData['content']);
+
+        $Newsletter = new Newsletter($id);
+        $updated_Newsletter = $Newsletter->update($updatedData);
+        echo json_encode(['data' => $updated_Newsletter]);
+        die(); // nécessaire pour éviter d'être redirigé par le routeur
+    }
+
     public function replicate(int $id) {
         $Newsletter = new Newsletter($id);
         $newNewsID = $Newsletter->replicate();
