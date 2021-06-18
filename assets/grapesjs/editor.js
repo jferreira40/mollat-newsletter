@@ -14,12 +14,12 @@ const editor = grapesjs.init({
 import mockedData from './mocked-data'
 
 async function mollatParseLatestFavorites () {
-  const parsedResult = mockedData.map(({ title, seo, media }) => {
+  const parsedResult = mockedData.map(({ title, seo, media, header }) => {
     return {
       title,
       seo,
       mediaUrl: media?.url_upload,
-      mediaAlt: media?.alternative_text
+      header
     }
   })
 
@@ -30,29 +30,42 @@ async function mollatParseLatestFavorites () {
 
 async function domReadyFavorites () {
   const parsedFavorites = await mollatParseLatestFavorites()
-  const sectionItem = document.createElement('mj-section')
 
-  parsedFavorites.forEach(async ({ title, seo, mediaUrl, mediaAlt }) => {
-    const linkItem = document.createElement('a')
-    linkItem.href = seo
+  const wrapperItem = document.createElement('mj-wrapper')
 
-    const titleItem = document.createElement('mj-text')
-    titleItem.textContent = title
+  parsedFavorites.forEach(async ({ title, seo, mediaUrl, header }, i) => {
+    const sectionItem = document.createElement('mj-section')
+
+    const column1 = document.createElement('mj-column')
+    const column2 = document.createElement('mj-column')
+    const column3 = document.createElement('mj-column')
+
+    const counterItem = document.createElement('mj-text')
+    counterItem.textContent = i + 1
+    column1.append(counterItem)
 
     const imageItem = document.createElement('img')
-
     imageItem.src = 'data:image/jpeg;base64,' + mediaUrl
-    imageItem.alt = mediaAlt
     imageItem.style.width = "100%"
+    column2.append(imageItem)
 
-    linkItem.append(titleItem, imageItem)
+    const titleItem = document.createElement('mj-text')
+    const chapoItem = document.createElement('mj-text')
+    const buttonItem = document.createElement('mj-button')
 
-    const columnItem = document.createElement('mj-column')
-    columnItem.append(linkItem)
-    sectionItem.append(columnItem)
+    titleItem.textContent = title
+
+    chapoItem.textContent = header
+
+    buttonItem.textContent = 'Découvrir'
+
+    column3.append(titleItem, chapoItem, buttonItem)
+
+    sectionItem.append(column1, column2, column3)
+    wrapperItem.append(sectionItem)
   })
 
-  paintFavorites(sectionItem.outerHTML)
+  paintFavorites(wrapperItem.outerHTML)
 }
 
 function paintFavorites (content) {
