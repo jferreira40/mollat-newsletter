@@ -12,7 +12,7 @@
                         type="text"
                         name="page_name"
                         id="page_name"
-                        placeholder="<?php echo $page['name'] ?>" value="<?php echo $page['name'] ?>"
+                        placeholder="Nom de la page" value="<?php echo $page['name'] ?>"
                         class="form-control"
                         aria-label="Nom de la page"
                         aria-describedby="input_page_name">
@@ -23,7 +23,7 @@
                         type="text"
                         name="page_url"
                         id="page_url"
-                        placeholder="<?php echo $page['url'] ?>" value="<?php echo $page['url'] ?>"
+                        placeholder="URL de la page" value="<?php echo $page['url'] ?>"
                         class="form-control"
                         aria-label="URL de la page"
                         aria-describedby="input_page_url">
@@ -37,7 +37,7 @@
                         type="text"
                         name="page_title"
                         id="page_title"
-                        placeholder="<?php echo $page['title'] ?>" value="<?php echo $page['title'] ?>"
+                        placeholder="Balise title de la page" value="<?php echo $page['title'] ?>"
                         class="form-control"
                         aria-label="Balise title de la page"
                         aria-describedby="input_page_title">
@@ -139,6 +139,12 @@
             const pageURL = document.getElementById('page_url').value
             const pageContent = PageEditor.getHtml()
 
+            if (pageName.trim().length < 1 ||
+                pageContent.trim().length < 1
+            ) {
+                return alert('Merci de renseigner tous les champs.')
+            }
+
             let formData = new FormData();
             formData.append('name', pageName);
             formData.append('title', pageTitle);
@@ -162,6 +168,12 @@
             const pageDescription = document.getElementById('page_description').value
             const pageURL = document.getElementById('page_url').value
             const pageContent = PageEditor.getHtml()
+
+            if (pageName.trim().length < 1 ||
+                pageContent.trim().length < 1
+            ) {
+                return alert('Merci de renseigner tous les champs.')
+            }
 
             let formData = new FormData();
             formData.append('name', pageName);
