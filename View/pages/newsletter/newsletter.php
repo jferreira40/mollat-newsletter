@@ -12,7 +12,7 @@
                         type="text"
                         id="news_title"
                         name="news_title"
-                        placeholder="<?php echo $news['title'] ?>" value="<?php echo $news['title'] ?>"
+                        placeholder="Titre de la newsletter" value="<?php echo $news['title'] ?>"
                         class="form-control"
                         aria-label="Titre de la news"
                         aria-describedby="input_news_title">
@@ -31,7 +31,7 @@
             <div id="gjs">
                 <?php echo $news['content'] ?>
             </div>
-            <div class="col-12 mt-2 text-end">
+            <div class="col-12 mt-2 text-right">
                 <button id="save_newsletter" type="submit" class="btn btn-success">Modifier</button>
             </div>
         </form>
@@ -66,8 +66,8 @@
                     <mj-text>Nouvelle newsletter</mj-text>
                 </mj-column></mj-section></mj-body></mjml>
             </div>
-            <div class="col-12 mt-2 text-end">
-                <button id="save_newsletter" type="submit" class="btn btn-success">Enregistrer</button>
+            <div class="col-12 mt-2 text-right">
+                <button id="save_new_newsletter" type="submit" class="btn btn-success">Enregistrer</button>
             </div>
         </form>
     <?php endif; ?>
@@ -84,12 +84,19 @@ document.addEventListener("DOMContentLoaded", function () {
             editor.setComponents(selectedTemplate.content)
         } else alert('Merci de sélectionner un template.')
     });
-    document.getElementById('save_newsletter').addEventListener('click', (e) => {
+    <?php if(isset($news) && $news['content']) : ?>
+    document.getElementById('save_newsletter').addEventListener('click', async (e) => {
         e.preventDefault()
         const rootPath = <?php echo json_encode(ROOT) ?>;
         const newsID = <?php echo $news['id'] ?>;
         const newsTitle = document.getElementById('news_title').value
         const newsContent = editor.getHtml()
+
+        if (newsTitle.trim().length < 1 ||
+            newsContent.trim().length < 1
+        ) {
+            return alert('Merci de renseigner tous les champs.')
+        }
 
         let formData = new FormData();
         formData.append('title', newsTitle);
@@ -102,5 +109,37 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((response) => response.json())
             .then((res) => window.location.reload(false));
     });
+    <?php else : ?>
+    document.getElementById('save_new_newsletter').addEventListener('click', (e) => {
+        e.preventDefault()
+        console.log('editor')
+        const rootPath = <?php echo json_encode(ROOT) ?>;
+        const newsTitle = document.getElementById('news_title').value
+        const newsContent = editor.getHtml()
+
+        if (newsTitle.trim().length < 1 ||
+            newsContent.trim().length < 1
+        ) {
+            return alert('Merci de renseigner tous les champs.')
+        }
+
+        let formData = new FormData();
+        formData.append('title', newsTitle);
+        formData.append('content', newsContent);
+
+        fetch(`${rootPath}newsletter/store`, {
+                body: formData,
+                method: "post"
+            })
+            .then((response) => response.json())
+            .then((res) => window.location.href=rootPath+"newsletter/show/"+res.data);
+    });
+    <?php endif ?>
+    window.onbeforeunload = function() {
+        return;
+    };
 });
+window.onbeforeunload = function() {
+    return;
+};
 </script>

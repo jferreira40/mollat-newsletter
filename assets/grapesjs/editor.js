@@ -8,10 +8,12 @@ const editor = grapesjs.init({
   fromElement: true,
   height: '60vh',
   width: '100%',
-  // storageManager: false,
+  storageManager: {
+    autosave: true,
+    autoload: false,
+    stepsBeforeSave: 5,
+  },
 })
-
-import mockedData from './mocked-data'
 
 async function mollatParseLatestFavorites () {
   const parsedResult = mockedData.map(({ title, seo, media, header }) => {

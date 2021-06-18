@@ -36,10 +36,13 @@ class NewsletterController extends Controller {
     }
 
     public function store () {
-        var_dump($_POST);
-        die();
-        echo json_encode(['data' => 1]);
-        die(); // die() nécessaire pour éviter d'être redirigé par le routeur
+        $dataToStore = $_POST;
+        $dataToStore['content'] = preg_replace( "/\r|\n/", "", $dataToStore['content']);
+
+        $Newsletter = new Newsletter();
+        $new_Newsletter = $Newsletter->store($dataToStore);
+        echo json_encode(['data' => $new_Newsletter]);
+        die(); // nécessaire pour éviter d'être redirigé par le routeur
     }
 
     public function update (int $id) {

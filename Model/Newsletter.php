@@ -25,11 +25,14 @@ class Newsletter extends Model
         return $query->rowCount();
     }
 
-    public function store ($Model) {
-        $sql = "INSERT INTO ".$this->table." WHERE id=".$this->id;
+    public function store ($data) {
+        $sql = "INSERT INTO ".$this->table." (title, content) VALUES (:title, :content)";
         $query = $this->_connexion->prepare($sql);
+        $query->bindParam(':title', $data['title']);
+        $query->bindParam(':content',  $data['content']);
         $query->execute();
-        return $query->rowCount();
+
+        return $this->_connexion->lastInsertId();
     }
 
     public function replicate () {
