@@ -22,20 +22,25 @@ if($params[0] != "") {
     $action = isset($params[1]) ? $params[1] : 'index';
 
     // On appelle le contrôleur
-    require_once('Controller/'.$controller.'.php');
+    if (file_exists('Controller/'.$controller.'.php')) {
+        // On instancie le contrôleur
+        require_once('Controller/'.$controller.'.php');
+        $controller = new $controller();
 
-    // On instancie le contrôleur
-    $controller = new $controller();
-
-    if (method_exists($controller, $action)){
-        // On supprime les 2 premiers paramètres
-        unset($params[0]);
-        unset($params[1]);
-        $Content = call_user_func_array([$controller,$action], $params);
-        $_SESSION['data'] = extract($Content['data']);
+        if (method_exists($controller, $action)){
+            unset($params[0]);
+            unset($params[1]);
+            $Content = call_user_func_array([$controller,$action], $params);
+            $_SESSION['data'] = extract($Content['data']);
+        } else {
+            http_response_code(404);
+            echo "La page recherchée n'existe pas";
+        }
     } else {
-        http_response_code(404);
-        echo "La page recherchée n'existe pas";
+        $Content = [
+            'file' => ('View/pages/not_found.php'),
+            'data' => []
+        ];
     }
 } else {
     // Ici aucun paramètre n'est défini
