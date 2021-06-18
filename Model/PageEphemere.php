@@ -15,8 +15,10 @@ class PageEphemere extends Model {
     }
 
     public function update ($data) {
-        $sql = "UPDATE ".$this->table." SET title=:title, description=:description, url=:url WHERE id=".$this->id;
+        $sql = "UPDATE ".$this->table." SET name=:name, content=:content, title=:title, description=:description, url=:url WHERE id=".$this->id;
         $query = $this->_connexion->prepare($sql);
+        $query->bindParam(':name', $data['name']);
+        $query->bindParam(':content', $data['content']);
         $query->bindParam(':title', $data['title']);
         $query->bindParam(':description', $data['description']);
         $query->bindParam(':url', $data['url']);
@@ -25,8 +27,10 @@ class PageEphemere extends Model {
     }
 
     public function store ($data) {
-        $sql = "INSERT INTO ".$this->table." (title, description, url) VALUES (:title, :description, :url)";
+        $sql = "INSERT INTO ".$this->table." (name, content, title, description, url) VALUES (:name, :content, :title, :description, :url)";
         $query = $this->_connexion->prepare($sql);
+        $query->bindParam(':name', $data['name']);
+        $query->bindParam(':content', $data['content']);
         $query->bindParam(':title', $data['title']);
         $query->bindParam(':description',  $data['description']);
         $query->bindParam(':url',  $data['url']);
@@ -37,11 +41,13 @@ class PageEphemere extends Model {
 
     public function replicate () {
         $PageReference = $this->getOne();
-        $newTitle = $PageReference['title'].' (copie)';
-        $sql = "INSERT INTO ".$this->table." (title, description, url) VALUES (:title, :description, :url)";
+        $newName = $PageReference['name'].' (copie)';
+        $sql = "INSERT INTO ".$this->table." (name, content, title, description, url) VALUES (:name, :content, :title, :description, :url)";
         $query = $this->_connexion->prepare($sql);
-        $query->bindParam(':title', $newTitle);
-        $query->bindParam(':description', $PageReference['description']);
+        $query->bindParam(':name', $newName);
+        $query->bindParam(':content', $PageReference['content']);
+        $query->bindValue(':title', "");
+        $query->bindParam(':description', "");
         $query->bindValue(':url', "");
         $query->execute();
 

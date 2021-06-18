@@ -5,18 +5,18 @@
     <?php if(isset($page) && $page['id']) : ?>
         <h2>Éditer la page éphémère</h2>
         <form role="form">
-            <div class="d-flex flex-column mt-4">
+            <div class="d-flex flex-row mb-4">
                 <div class="input-group w-25 input-group-md mb-3">
-                    <span class="input-group-text" id="input_page_title">Nom</span>
+                    <span class="input-group-text" id="input_page_name">Nom</span>
                     <input
                         type="text"
-                        name="page_title"
-                        id="page_title"
-                        placeholder="<?php echo $page['title'] ?>" value="<?php echo $page['title'] ?>"
+                        name="page_name"
+                        id="page_name"
+                        placeholder="<?php echo $page['name'] ?>" value="<?php echo $page['name'] ?>"
                         class="form-control"
-                        aria-label="Titre du template"
-                        aria-describedby="input_page_title">
-                </div>
+                        aria-label="Nom de la page"
+                        aria-describedby="input_page_name">
+                </div>&nbsp;&nbsp;
                 <div class="input-group w-25 input-group-md mb-3">
                     <span class="input-group-text" id="input_page_url">URL</span>
                     <input
@@ -29,8 +29,36 @@
                         aria-describedby="input_page_url">
                 </div>
             </div>
+            <h4>SEO</h4>
+            <div class="d-flex flex-row">
+                <div class="input-group w-25 input-group-md mb-3">
+                    <span class="input-group-text" id="input_page_title">Title</span>
+                    <input
+                        type="text"
+                        name="page_title"
+                        id="page_title"
+                        placeholder="<?php echo $page['title'] ?>" value="<?php echo $page['title'] ?>"
+                        class="form-control"
+                        aria-label="Balise title de la page"
+                        aria-describedby="input_page_title">
+                </div>&nbsp;&nbsp;
+                <div class="input-group w-25 input-group-md mb-3">
+                    <span class="input-group-text" id="input_page_description">Description</span>
+                    <input
+                        type="text"
+                        name="page_description"
+                        id="page_description"
+                        placeholder="<?php echo $page['description'] ?>" value="<?php echo $page['description'] ?>"
+                        class="form-control"
+                        aria-label="Meta description de la page"
+                        aria-describedby="input_page_description">
+                </div>
+            </div>
+            <div class="col-12 mb-2 text-end">
+                <button id="save_page" type="submit" class="btn btn-success">Modifier</button>
+            </div>
             <div id="gjs_page">
-                <?php echo $page['description'] ?>
+                <?php echo $page['content'] ?>
             </div>
             <div class="col-12 mt-2 text-end">
                 <button id="save_page" type="submit" class="btn btn-success">Modifier</button>
@@ -39,18 +67,18 @@
     <?php else : ?>
         <h2>Créer une nouvelle page éphémère</h2>
         <form role="form">
-            <div class="d-flex flex-column mt-4">
+            <div class="d-flex flex-row mb-4">
                 <div class="input-group w-25 input-group-md mb-3">
-                    <span class="input-group-text" id="input_page_title">Nom</span>
+                    <span class="input-group-text" id="input_page_name">Nom</span>
                     <input
                         type="text"
-                        name="page_title"
-                        id="page_title"
-                        placeholder="Nom du template"
+                        name="page_name"
+                        id="page_name"
+                        placeholder="Nom de la page"
                         class="form-control"
-                        aria-label="Titre du template"
-                        aria-describedby="input_page_title">
-                </div>
+                        aria-label="Nom de la page"
+                        aria-describedby="input_page_name">
+                </div>&nbsp;&nbsp;
                 <div class="input-group w-25 input-group-md mb-3">
                     <span class="input-group-text" id="input_page_url">URL</span>
                     <input
@@ -61,6 +89,31 @@
                         class="form-control"
                         aria-label="URL de la page"
                         aria-describedby="input_page_url">
+                </div>
+            </div>
+            <h4>SEO</h4>
+            <div class="d-flex flex-row">
+                <div class="input-group w-25 input-group-md mb-3">
+                    <span class="input-group-text" id="input_page_title">Title</span>
+                    <input
+                        type="text"
+                        name="page_title"
+                        id="page_title"
+                        placeholder="Balise title de la page"
+                        class="form-control"
+                        aria-label="Balise title de la page"
+                        aria-describedby="input_page_title">
+                </div>&nbsp;&nbsp;
+                <div class="input-group w-25 input-group-md mb-3">
+                    <span class="input-group-text" id="input_page_description">Description</span>
+                    <input
+                        type="text"
+                        name="page_description"
+                        id="page_description"
+                        placeholder="Meta description de la page"
+                        class="form-control"
+                        aria-label="Meta description de la page"
+                        aria-describedby="input_page_description">
                 </div>
             </div>
             <div id="gjs_page">
@@ -80,13 +133,17 @@
             e.preventDefault()
             const rootPath = <?php echo json_encode(ROOT) ?>;
             const pageID = <?php echo $page['id'] ?>;
+            const pageName = document.getElementById('page_name').value
             const pageTitle = document.getElementById('page_title').value
+            const pageDescription = document.getElementById('page_description').value
             const pageURL = document.getElementById('page_url').value
-            const pageDescription = PageEditor.getHtml()
+            const pageContent = PageEditor.getHtml()
 
             let formData = new FormData();
+            formData.append('name', pageName);
             formData.append('title', pageTitle);
             formData.append('description', pageDescription);
+            formData.append('content', pageContent);
             formData.append('url', pageURL);
 
             fetch(`${rootPath}pages/update/${pageID}`, {
@@ -100,13 +157,17 @@
         document.getElementById('save_new_page').addEventListener('click', (e) => {
             e.preventDefault()
             const rootPath = <?php echo json_encode(ROOT) ?>;
+            const pageName = document.getElementById('page_name').value
             const pageTitle = document.getElementById('page_title').value
+            const pageDescription = document.getElementById('page_description').value
             const pageURL = document.getElementById('page_url').value
-            const pageDescription = PageEditor.getHtml()
+            const pageContent = PageEditor.getHtml()
 
             let formData = new FormData();
+            formData.append('name', pageName);
             formData.append('title', pageTitle);
             formData.append('description', pageDescription);
+            formData.append('content', pageContent);
             formData.append('url', pageURL);
 
             fetch(`${rootPath}pages/store`, {

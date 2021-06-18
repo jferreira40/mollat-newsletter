@@ -9,6 +9,8 @@
             <th>ID</th>
             <th>Titre</th>
             <th>URL</th>
+            <th>SEO (title)</th>
+            <th>SEO (description)</th>
             <th></th>
             </thead>
 
@@ -20,8 +22,10 @@
                 $link_destroy = ROOT.'pages/destroy/'.$page['id'];
                 echo "<tr>";
                 echo "<td>".$page['id']."</td>";
-                echo "<td>".$page['title']."</td>";
+                echo "<td>".$page['name']."</td>";
                 echo "<td>".$page['url']."</td>";
+                echo "<td>".$page['title']."</td>";
+                echo "<td>".$page['description']."</td>";
                 echo "<td class='text-end'><a href='$link_edit' class='btn'><i class='fas fa-pen-square'></i></a>";
                 echo "<a href='$link_replicate' class='btn'><i class='fas fa-copy'></i></a>";
                 echo "<a href='$link_destroy' class='btn'><i class='fas fa-trash'></i></a></td>";
