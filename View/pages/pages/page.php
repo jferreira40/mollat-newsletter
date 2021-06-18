@@ -41,18 +41,17 @@
                         class="form-control"
                         aria-label="Balise title de la page"
                         aria-describedby="input_page_title">
-                </div>&nbsp;&nbsp;
-                <div class="input-group w-25 input-group-md mb-3">
-                    <span class="input-group-text" id="input_page_description">Description</span>
-                    <input
-                        type="text"
-                        name="page_description"
-                        id="page_description"
-                        placeholder="<?php echo $page['description'] ?>" value="<?php echo $page['description'] ?>"
-                        class="form-control"
-                        aria-label="Meta description de la page"
-                        aria-describedby="input_page_description">
                 </div>
+            </div>
+            <div class="input-group w-25 input-group-md mb-3">
+                <span class="input-group-text" id="input_page_description">Description</span>
+                <textarea
+                    name="page_description"
+                    id="page_description"
+                    placeholder="<?php echo $page['description'] ?>" value="<?php echo $page['description'] ?>"
+                    class="form-control"
+                    aria-label="Meta description de la page"
+                    aria-describedby="input_page_description"></textarea>
             </div>
             <div class="col-12 mb-2 text-end">
                 <button id="save_page" type="submit" class="btn btn-success">Modifier</button>
@@ -106,14 +105,13 @@
                 </div>&nbsp;&nbsp;
                 <div class="input-group w-25 input-group-md mb-3">
                     <span class="input-group-text" id="input_page_description">Description</span>
-                    <input
-                        type="text"
+                    <textarea
                         name="page_description"
                         id="page_description"
                         placeholder="Meta description de la page"
                         class="form-control"
                         aria-label="Meta description de la page"
-                        aria-describedby="input_page_description">
+                        aria-describedby="input_page_description"></textarea>
                 </div>
             </div>
             <div id="gjs_page">
