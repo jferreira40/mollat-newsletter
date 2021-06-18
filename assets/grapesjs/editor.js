@@ -42,8 +42,13 @@ async function domReadyFavorites () {
     const column2 = document.createElement('mj-column')
     const column3 = document.createElement('mj-column')
 
-    const counterItem = document.createElement('mj-text')
+    const counterItem = document.createElement('p')
     counterItem.textContent = i + 1
+    counterItem.style.backgroundColor = '#001689'
+    counterItem.style.color = '#fff'
+    counterItem.style.width = '6px'
+    counterItem.style.padding = '12px'
+    counterItem.style.display = 'inline'
     column1.append(counterItem)
 
     const imageItem = document.createElement('img')
@@ -56,10 +61,15 @@ async function domReadyFavorites () {
     const buttonItem = document.createElement('mj-button')
 
     titleItem.textContent = title
+    titleItem.style.color = '#001689'
+    titleItem.style.fontSize = '22px'
+    titleItem.style.fontWeight = 800
+    titleItem.style.paddingTop = '30px'
 
     chapoItem.textContent = header
 
     buttonItem.textContent = 'Découvrir'
+    buttonItem.style.backgroundColor = '#001689'
 
     column3.append(titleItem, chapoItem, buttonItem)
 
