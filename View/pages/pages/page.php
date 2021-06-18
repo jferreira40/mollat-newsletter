@@ -102,17 +102,17 @@
                         class="form-control"
                         aria-label="Balise title de la page"
                         aria-describedby="input_page_title">
-                </div>&nbsp;&nbsp;
-                <div class="input-group w-25 input-group-md mb-3">
-                    <span class="input-group-text" id="input_page_description">Description</span>
-                    <textarea
-                        name="page_description"
-                        id="page_description"
-                        placeholder="Meta description de la page"
-                        class="form-control"
-                        aria-label="Meta description de la page"
-                        aria-describedby="input_page_description"></textarea>
                 </div>
+            </div>
+            <div class="input-group w-25 input-group-md mb-3">
+                <span class="input-group-text" id="input_page_description">Description</span>
+                <textarea
+                    name="page_description"
+                    id="page_description"
+                    placeholder="Meta description de la page"
+                    class="form-control"
+                    aria-label="Meta description de la page"
+                    aria-describedby="input_page_description"></textarea>
             </div>
             <div id="gjs_page">
                 <h2>Nouvelle page</h2>
