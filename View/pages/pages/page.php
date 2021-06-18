@@ -53,13 +53,13 @@
                     aria-label="Meta description de la page"
                     aria-describedby="input_page_description"></textarea>
             </div>
-            <div class="col-12 mb-2 text-end">
+            <div class="col-12 mb-2 text-right">
                 <button id="save_page" type="submit" class="btn btn-success">Modifier</button>
             </div>
             <div id="gjs_page">
                 <?php echo $page['content'] ?>
             </div>
-            <div class="col-12 mt-2 text-end">
+            <div class="col-12 mt-2 text-right">
                 <button id="save_page" type="submit" class="btn btn-success">Modifier</button>
             </div>
         </form>
@@ -117,7 +117,7 @@
             <div id="gjs_page">
                 <h2>Nouvelle page</h2>
             </div>
-            <div class="col-12 mt-2 text-end">
+            <div class="col-12 mt-2 text-right">
                 <button id="save_new_page" type="submit" class="btn btn-success">Enregistrer</button>
             </div>
         </form>

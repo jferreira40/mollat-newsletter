@@ -1,10 +1,10 @@
 <div class="content d-flex flex-column w-100 p-4">
     <h2>Gestion des pages éphémères</h2>
     <div class="mt-4">
-        <a href="<?php echo ROOT ?>pages/create" class="btn btn-info float-end"><i class="fas fa-plus mr-2"></i>  Nouvelle page éphémère</a>
+        <a href="<?php echo ROOT ?>pages/create" class="btn btn-info float-right"><i class="fas fa-plus mr-2"></i>  Nouvelle page éphémère</a>
     </div>
     <div class="listNews mt-2">
-        <table class="table table-light">
+        <table class="table bg-white">
             <thead>
             <th>ID</th>
             <th>Titre</th>
