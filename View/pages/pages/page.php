@@ -59,9 +59,6 @@
             <div id="gjs_page">
                 <?php echo $page['content'] ?>
             </div>
-            <div class="col-12 mt-2 text-right">
-                <button id="save_page" type="submit" class="btn btn-success">Modifier</button>
-            </div>
         </form>
     <?php else : ?>
         <h2>Créer une nouvelle page éphémère</h2>
@@ -122,6 +119,18 @@
             </div>
         </form>
     <?php endif; ?>
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; bottom: 1rem; left: 1rem; z-index: 9">
+        <div class="toast-header" style="background-color: #218838; color: #fff">
+            <img src="<?php echo ROOT ?>assets/images/favicon.ico" class="rounded mr-2" alt="Mollat" style="width: 18px">
+            <strong class="mr-auto">
+                La page a bien été crée / modifiée !
+            </strong>
+            <small class="text-muted"></small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -155,7 +164,13 @@
                 method: "post"
             })
                 .then((response) => response.json())
-                .then((res) => window.location.reload(false));
+                .then((res) => {
+                    $('.toast').toast({delay: 2000})
+                    $('.toast').toast('show')
+                    setTimeout(() => {
+                        window.location.reload(false)
+                    }, 2100)
+                });
         });
         <?php else : ?>
         document.getElementById('save_new_page').addEventListener('click', (e) => {
@@ -185,7 +200,13 @@
                 method: "post"
             })
                 .then((response) => response.json())
-                .then((res) => window.location.href=rootPath+"pages/show/"+res.data);
+                .then((res) => {
+                    $('.toast').toast({delay: 2000})
+                    $('.toast').toast('show')
+                    setTimeout(() => {
+                        window.location.href = rootPath + "pages/show/" + res.data
+                    }, 2100)
+                });
         });
         <?php endif ?>
         window.onbeforeunload = function() {
