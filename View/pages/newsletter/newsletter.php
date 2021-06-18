@@ -31,7 +31,7 @@
             <div id="gjs">
                 <?php echo $news['content'] ?>
             </div>
-            <div class="col-12 mt-2 text-end">
+            <div class="col-12 mt-2 text-right">
                 <button id="save_newsletter" type="submit" class="btn btn-success">Modifier</button>
             </div>
         </form>
@@ -66,7 +66,7 @@
                     <mj-text>Nouvelle newsletter</mj-text>
                 </mj-column></mj-section></mj-body></mjml>
             </div>
-            <div class="col-12 mt-2 text-end">
+            <div class="col-12 mt-2 text-right">
                 <button id="save_new_newsletter" type="submit" class="btn btn-success">Enregistrer</button>
             </div>
         </form>
