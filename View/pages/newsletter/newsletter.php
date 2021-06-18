@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else alert('Merci de sélectionner un template.')
     });
     <?php if(isset($news) && $news['content']) : ?>
-    document.getElementById('save_newsletter').addEventListener('click', (e) => {
+    document.getElementById('save_newsletter').addEventListener('click', async (e) => {
         e.preventDefault()
         const rootPath = <?php echo json_encode(ROOT) ?>;
         const newsID = <?php echo $news['id'] ?>;
@@ -106,6 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <?php else : ?>
     document.getElementById('save_new_newsletter').addEventListener('click', (e) => {
         e.preventDefault()
+        console.log('editor')
         const rootPath = <?php echo json_encode(ROOT) ?>;
         const newsTitle = document.getElementById('news_title').value
         const newsContent = editor.getHtml()

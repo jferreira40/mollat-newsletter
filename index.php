@@ -76,6 +76,7 @@ if($params[0] != "") {
     <link rel="stylesheet" href="https://unpkg.com/grapesjs/dist/css/grapes.min.css">
     <script src="https://unpkg.com/grapesjs"></script>
     <script src="<?php echo ROOT ?>assets/grapesjs/modules/grapesjs-mjml.min.js"></script>
+    <script src="<?php echo ROOT ?>assets/grapesjs/modules/grapesjs-preset-webpage.min.js"></script>
 </head>
 
 <body>
@@ -88,6 +89,8 @@ if($params[0] != "") {
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <script src="<?php echo ROOT ?>assets/grapesjs/editor.js" defer type="module"></script>
+    <script src="<?php echo ROOT ?>assets/grapesjs/mocked-data.js"></script>
+    <script src="<?php echo ROOT ?>assets/grapesjs/editor.js"></script>
+    <script src="<?php echo ROOT ?>assets/grapesjs/PageEditor.js"></script>
 </body>
 </html>

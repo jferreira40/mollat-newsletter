@@ -11,8 +11,6 @@ const editor = grapesjs.init({
   // storageManager: false,
 })
 
-import mockedData from './mocked-data'
-
 async function mollatParseLatestFavorites () {
   const parsedResult = mockedData.map(({ title, seo, media }) => {
     return {

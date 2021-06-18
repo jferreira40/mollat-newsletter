@@ -1,4 +1,4 @@
-export default [
+const mockedData =  [
   {
     "id": 147558,
     "datePublication": "\/Date(1623843047223)\/",

@@ -76,7 +76,7 @@ function active($currect_page){
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownOthers">
                     <li><a class="dropdown-item" href="#">Pages statiques</a></li>
-                    <li><a class="dropdown-item" href="#">Pages éphémères</a></li>
+                    <li><a class="dropdown-item <?php active(['pages']); ?>" href="<?php echo ROOT ?>pages">Pages éphémères</a></li>
                     <li><a class="dropdown-item" href="#">Personnalisation</a></li>
                     <li><a class="dropdown-item" href="#">Surcharge Electre</a></li>
                     <li><a class="dropdown-item" href="#">Ajouter une couverture</a></li>
