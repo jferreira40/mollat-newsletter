@@ -3,7 +3,7 @@ session_start();
 
 include_once '_env.php';
 
-if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === 'www.localhost') {
+if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === 'www.localhost' || isset($HOST)) {
     $BASE_DIR = "$HOST";
 } else $BASE_DIR = 'https://'.$_SERVER['SERVER_NAME'];
 

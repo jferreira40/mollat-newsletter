@@ -63,6 +63,12 @@
             const templateName = document.getElementById('temp_name').value
             const templateContent = editor.getHtml()
 
+            if (templateName.trim().length < 1 ||
+                templateContent.trim().length < 1
+            ) {
+                return alert('Merci de renseigner tous les champs.')
+            }
+
             let formData = new FormData();
             formData.append('name', templateName);
             formData.append('content', templateContent);
@@ -80,6 +86,12 @@
             const rootPath = <?php echo json_encode(ROOT) ?>;
             const templateName = document.getElementById('temp_name').value
             const templateContent = editor.getHtml()
+
+            if (templateName.trim().length < 1 ||
+                templateContent.trim().length < 1
+            ) {
+                return alert('Merci de renseigner tous les champs.')
+            }
 
             let formData = new FormData();
             formData.append('name', templateName);

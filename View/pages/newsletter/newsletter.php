@@ -12,7 +12,7 @@
                         type="text"
                         id="news_title"
                         name="news_title"
-                        placeholder="<?php echo $news['title'] ?>" value="<?php echo $news['title'] ?>"
+                        placeholder="Titre de la newsletter" value="<?php echo $news['title'] ?>"
                         class="form-control"
                         aria-label="Titre de la news"
                         aria-describedby="input_news_title">
@@ -92,6 +92,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const newsTitle = document.getElementById('news_title').value
         const newsContent = editor.getHtml()
 
+        if (newsTitle.trim().length < 1 ||
+            newsContent.trim().length < 1
+        ) {
+            return alert('Merci de renseigner tous les champs.')
+        }
+
         let formData = new FormData();
         formData.append('title', newsTitle);
         formData.append('content', newsContent);
@@ -111,6 +117,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const newsTitle = document.getElementById('news_title').value
         const newsContent = editor.getHtml()
 
+        if (newsTitle.trim().length < 1 ||
+            newsContent.trim().length < 1
+        ) {
+            return alert('Merci de renseigner tous les champs.')
+        }
+
         let formData = new FormData();
         formData.append('title', newsTitle);
         formData.append('content', newsContent);
@@ -123,5 +135,11 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((res) => window.location.href=rootPath+"newsletter/show/"+res.data);
     });
     <?php endif ?>
+    window.onbeforeunload = function() {
+        return;
+    };
 });
+window.onbeforeunload = function() {
+    return;
+};
 </script>
