@@ -70,7 +70,7 @@ function active($currect_page){
         </li>
         <li class="ml-4">
             <div class="dropdown">
-                <a href="#" class="nav-link d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownOthers" data-bs-toggle="dropdown" aria-expanded="false">
+                <a href="#" class="nav-link <?php active(['pages']) ?> d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownOthers" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-list-alt"></i>&nbsp;
                     Autres
                 </a>

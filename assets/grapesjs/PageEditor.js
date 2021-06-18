@@ -10,5 +10,9 @@ const PageEditor = grapesjs.init({
   fromElement: true,
   height: '60vh',
   width: '100%',
-  // storageManager: false,
+  storageManager: {
+    autosave: true,
+    autoload: true,
+    stepsBeforeSave: 5,
+  },
 })

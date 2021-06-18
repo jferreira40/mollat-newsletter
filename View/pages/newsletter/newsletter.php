@@ -123,5 +123,11 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((res) => window.location.href=rootPath+"newsletter/show/"+res.data);
     });
     <?php endif ?>
+    window.onbeforeunload = function() {
+        return;
+    };
 });
+window.onbeforeunload = function() {
+    return;
+};
 </script>

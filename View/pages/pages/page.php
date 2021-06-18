@@ -2,31 +2,31 @@
     <a href="<?php echo ROOT ?>pages" class="text-decoration-none mb-3">
         <i class="fas fa-arrow-left"></i> Retour
     </a>
-    <?php if(isset($page) && $page['description']) : ?>
+    <?php if(isset($page) && $page['id']) : ?>
         <h2>Éditer la page éphémère</h2>
         <form role="form">
             <div class="d-flex flex-column mt-4">
                 <div class="input-group w-25 input-group-md mb-3">
                     <span class="input-group-text" id="input_page_title">Nom</span>
                     <input
-                            type="text"
-                            name="page_title"
-                            id="page_title"
-                            placeholder="<?php echo $page['title'] ?>" value="<?php echo $page['title'] ?>"
-                            class="form-control"
-                            aria-label="Titre du template"
-                            aria-describedby="input_page_title">
+                        type="text"
+                        name="page_title"
+                        id="page_title"
+                        placeholder="<?php echo $page['title'] ?>" value="<?php echo $page['title'] ?>"
+                        class="form-control"
+                        aria-label="Titre du template"
+                        aria-describedby="input_page_title">
                 </div>
                 <div class="input-group w-25 input-group-md mb-3">
                     <span class="input-group-text" id="input_page_url">URL</span>
                     <input
-                            type="text"
-                            name="page_url"
-                            id="page_url"
-                            placeholder="<?php echo $page['url'] ?>" value="<?php echo $page['url'] ?>"
-                            class="form-control"
-                            aria-label="URL de la page"
-                            aria-describedby="input_page_url">
+                        type="text"
+                        name="page_url"
+                        id="page_url"
+                        placeholder="<?php echo $page['url'] ?>" value="<?php echo $page['url'] ?>"
+                        class="form-control"
+                        aria-label="URL de la page"
+                        aria-describedby="input_page_url">
                 </div>
             </div>
             <div id="gjs_page">
@@ -45,7 +45,7 @@
                     <input
                         type="text"
                         name="page_title"
-                        id="temp_name"
+                        id="page_title"
                         placeholder="Nom du template"
                         class="form-control"
                         aria-label="Titre du template"
@@ -57,7 +57,7 @@
                         type="text"
                         name="page_url"
                         id="page_url"
-                        placeholder="<?php echo $page['url'] ?>" value="<?php echo $page['url'] ?>"
+                        placeholder="URL de la page"
                         class="form-control"
                         aria-label="URL de la page"
                         aria-describedby="input_page_url">
@@ -75,17 +75,17 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        <?php if(isset($page) && $page['description']) : ?>
+        <?php if(isset($page) && $page['id']) : ?>
         document.getElementById('save_page').addEventListener('click', (e) => {
             e.preventDefault()
             const rootPath = <?php echo json_encode(ROOT) ?>;
             const pageID = <?php echo $page['id'] ?>;
-            const pageName = document.getElementById('page_title').value
+            const pageTitle = document.getElementById('page_title').value
             const pageURL = document.getElementById('page_url').value
             const pageDescription = PageEditor.getHtml()
 
             let formData = new FormData();
-            formData.append('name', pageName);
+            formData.append('title', pageTitle);
             formData.append('description', pageDescription);
             formData.append('url', pageURL);
 
@@ -100,13 +100,12 @@
         document.getElementById('save_new_page').addEventListener('click', (e) => {
             e.preventDefault()
             const rootPath = <?php echo json_encode(ROOT) ?>;
-            const pageID = <?php echo $page['id'] ?>;
-            const pageName = document.getElementById('page_title').value
+            const pageTitle = document.getElementById('page_title').value
             const pageURL = document.getElementById('page_url').value
             const pageDescription = PageEditor.getHtml()
 
             let formData = new FormData();
-            formData.append('name', pageName);
+            formData.append('title', pageTitle);
             formData.append('description', pageDescription);
             formData.append('url', pageURL);
 
@@ -118,5 +117,11 @@
                 .then((res) => window.location.href=rootPath+"pages/show/"+res.data);
         });
         <?php endif ?>
+        window.onbeforeunload = function() {
+            return;
+        };
     });
+    window.onbeforeunload = function() {
+        return;
+    };
 </script>
