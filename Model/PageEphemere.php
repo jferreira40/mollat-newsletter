@@ -47,7 +47,7 @@ class PageEphemere extends Model {
         $query->bindParam(':name', $newName);
         $query->bindParam(':content', $PageReference['content']);
         $query->bindValue(':title', "");
-        $query->bindParam(':description', "");
+        $query->bindValue(':description', "");
         $query->bindValue(':url', "");
         $query->execute();
 

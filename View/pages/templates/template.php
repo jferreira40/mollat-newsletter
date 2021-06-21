@@ -78,7 +78,13 @@
                 method: "post"
             })
                 .then((response) => response.json())
-                .then((res) => window.location.reload(false));
+                .then((res) => {
+                    $('.toast').toast({delay: 2000})
+                    $('.toast').toast('show')
+                    setTimeout(() => {
+                        window.location.reload(false)
+                    }, 2100)
+                });
         });
         <?php else : ?>
         document.getElementById('save_new_template').addEventListener('click', (e) => {
@@ -102,7 +108,13 @@
                 method: "post"
             })
                 .then((response) => response.json())
-                .then((res) => window.location.href=rootPath+"templates/show/"+res.data);
+                .then((res) => {
+                    $('.toast').toast({delay: 2000})
+                    $('.toast').toast('show')
+                    setTimeout(() => {
+                        window.location.href = rootPath + "templates/show/" + res.data
+                    }, 2100)
+                });
         });
         <?php endif ?>
     });
