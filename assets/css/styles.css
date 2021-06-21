@@ -28,4 +28,8 @@ main {
 .fa-cogs {
   font-size: 1.6rem;
 }
+.dropdown-item:not(.active):focus,
+.dropdown-item:not(.active):hover {
+  background-color: #3e444a !important;
+}
 /*# sourceMappingURL=styles.css.map */

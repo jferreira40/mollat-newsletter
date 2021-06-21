@@ -17,7 +17,7 @@
                         aria-label="Titre de la news"
                         aria-describedby="input_news_title">
                 </div>&nbsp;&nbsp;
-                <div class="input-group w-25 input-group-md mb-3">
+                <div class="input-group w-50 input-group-md mb-3">
                     <span class="input-group-text" id="input_news_template">Modèle</span>
                     <select name="news_template" id="news_template" class="form-select" aria-label="Choix d'un template" aria-describedby="input_news_template">
                         <option value="0" selected>Aucun template choisi</option>
@@ -50,7 +50,7 @@
                         aria-label="Titre de la news"
                         aria-describedby="input_news_title">
                 </div>&nbsp;&nbsp;
-                <div class="input-group w-25 input-group-md mb-3">
+                <div class="input-group w-50 input-group-md mb-3">
                     <span class="input-group-text" id="input_news_template">Template</span>
                     <select name="news_template" id="news_template" class="form-select" aria-label="Choix d'un template" aria-describedby="input_news_template">
                         <option value="0" selected>Aucun template choisi</option>

@@ -62,9 +62,9 @@ function active($currect_page){
                     Newsletters
                 </a>
                 <ul class="dropdown-menu bg-dark text-small shadow" aria-labelledby="dropdownNews">
-                    <li><a class="dropdown-item <?php active(['newsletter']); ?>" href="<?php echo ROOT ?>newsletter">Gestion</a></li>
-                    <li><a class="dropdown-item <?php active(['templates']); ?>" href="<?php echo ROOT ?>templates">Templates</a></li>
-                    <li><a class="dropdown-item <?php active(['journal']); ?>" href="<?php echo ROOT ?>journal">Journal d'envoi</a></li>
+                    <li><a class="dropdown-item text-white <?php active(['newsletter']); ?>" href="<?php echo ROOT ?>newsletter">Gestion</a></li>
+                    <li><a class="dropdown-item text-white <?php active(['templates']); ?>" href="<?php echo ROOT ?>templates">Templates</a></li>
+                    <li><a class="dropdown-item text-white <?php active(['journal']); ?>" href="<?php echo ROOT ?>journal">Journal d'envoi</a></li>
                 </ul>
             </div>
         </li>
@@ -75,11 +75,11 @@ function active($currect_page){
                     Autres
                 </a>
                 <ul class="dropdown-menu bg-dark text-small shadow" aria-labelledby="dropdownOthers">
-                    <li><a class="dropdown-item" href="#">Pages statiques</a></li>
-                    <li><a class="dropdown-item <?php active(['pages']); ?>" href="<?php echo ROOT ?>pages">Pages éphémères</a></li>
-                    <li><a class="dropdown-item" href="#">Personnalisation</a></li>
-                    <li><a class="dropdown-item" href="#">Surcharge Electre</a></li>
-                    <li><a class="dropdown-item" href="#">Ajouter une couverture</a></li>
+                    <li><a class="dropdown-item text-white" href="#">Pages statiques</a></li>
+                    <li><a class="dropdown-item text-white <?php active(['pages']); ?>" href="<?php echo ROOT ?>pages">Pages éphémères</a></li>
+                    <li><a class="dropdown-item text-white" href="#">Personnalisation</a></li>
+                    <li><a class="dropdown-item text-white" href="#">Surcharge Electre</a></li>
+                    <li><a class="dropdown-item text-white" href="#">Ajouter une couverture</a></li>
                 </ul>
             </div>
         </li>
