@@ -36,17 +36,17 @@
 </div>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    document.getElementsByClassName('delete').forEach(element => {
-
-    }).addEventListener('click', (e) => {
-      e.preventDefault()
-      if (document.getElementById('modal').style.display === "none") {
-        document.getElementById('modal').style.display = "block";
-      } else {
-        document.getElementById('modal').style.display = "none";
-      }
-      document.getElementById('delete-url').href = document.getElementById('delete').dataset.url;
-      console.log(document.getElementById('delete').dataset.url);
-    });
+    [...document.getElementsByClassName('delete')].forEach(element => {
+      element.addEventListener('click', (e) => {
+        e.preventDefault()
+        if (document.getElementById('modal').style.display === "none") {
+          document.getElementById('modal').style.display = "block";
+        } else {
+          document.getElementById('modal').style.display = "none";
+        }
+        document.getElementById('delete-url').href = element.dataset.url;
+        console.log(element.dataset.url);
+      });
+    })
   });
 </script>
