@@ -23,7 +23,7 @@
                     echo "<td>$template[name]</td>";
                     echo "<td class='text-right'><a href='$link_edit' class='btn'><i class='fas fa-pen-square'></i></a>";
                     echo "<a href='$link_replicate' class='btn'><i class='fas fa-copy'></i></a>";
-                    echo "<a href='$link_destroy' class='btn'><i class='fas fa-trash'></i></a></td>";
+                    echo "<button class='btn delete' data-url=".$link_destroy."><i class='fas fa-trash'></i></button></td>";
                     echo "</tr>";
                 }
             }
@@ -32,3 +32,22 @@
         </table>
     </div>
 </div>
+<div>
+    <?php include 'View/components/modal.php' ?>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    [...document.getElementsByClassName('delete')].forEach(element => {
+      element.addEventListener('click', (e) => {
+        e.preventDefault()
+        if (document.getElementById('modal').style.display === "none") {
+          document.getElementById('modal').style.display = "block";
+        } else {
+          document.getElementById('modal').style.display = "none";
+        }
+        document.getElementById('delete-url').href = element.dataset.url;
+      });
+    })
+  });
+</script>
+

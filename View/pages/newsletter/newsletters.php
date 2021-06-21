@@ -17,12 +17,13 @@
                 foreach ($news as $newsletter) {
                     $link_edit = ROOT.'newsletter/show/'.$newsletter['id'];
                     $link_replicate = ROOT.'newsletter/replicate/'.$newsletter['id'];
+                    $link_destroy = ROOT.'newsletter/destroy/'.$newsletter['id'];
                     echo "<tr>";
                     echo "<td>".$newsletter['id']."</td>";
                     echo "<td>".$newsletter['title']."</td>";
                     echo "<td class='text-right'><a href='$link_edit' class='btn'><i class='fas fa-pen-square'></i></a>";
                     echo "<a href='$link_replicate' class='btn'><i class='fas fa-copy'></i></a>";
-                    echo "<button class='btn delete' data-url=".ROOT.'newsletter/destroy/'.$newsletter['id']."><i class='fas fa-trash'></i></button></td>";
+                    echo "<button class='btn delete' data-url=".$link_destroy."><i class='fas fa-trash'></i></button></td>";
                     echo "</tr>";
                 }
             }
@@ -45,7 +46,6 @@
           document.getElementById('modal').style.display = "none";
         }
         document.getElementById('delete-url').href = element.dataset.url;
-        console.log(element.dataset.url);
       });
     })
   });
