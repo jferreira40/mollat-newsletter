@@ -61,7 +61,7 @@ function active($currect_page){
                     <i class="fas fa-newspaper"></i>&nbsp;
                     Newsletters
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownNews">
+                <ul class="dropdown-menu bg-dark text-small shadow" aria-labelledby="dropdownNews">
                     <li><a class="dropdown-item <?php active(['newsletter']); ?>" href="<?php echo ROOT ?>newsletter">Gestion</a></li>
                     <li><a class="dropdown-item <?php active(['templates']); ?>" href="<?php echo ROOT ?>templates">Templates</a></li>
                     <li><a class="dropdown-item <?php active(['journal']); ?>" href="<?php echo ROOT ?>journal">Journal d'envoi</a></li>
@@ -74,7 +74,7 @@ function active($currect_page){
                     <i class="fas fa-list-alt"></i>&nbsp;
                     Autres
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownOthers">
+                <ul class="dropdown-menu bg-dark text-small shadow" aria-labelledby="dropdownOthers">
                     <li><a class="dropdown-item" href="#">Pages statiques</a></li>
                     <li><a class="dropdown-item <?php active(['pages']); ?>" href="<?php echo ROOT ?>pages">Pages éphémères</a></li>
                     <li><a class="dropdown-item" href="#">Personnalisation</a></li>
