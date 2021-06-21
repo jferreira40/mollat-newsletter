@@ -1,0 +1,56 @@
+/* --- FontAwesome fix into GrapesJS --- */
+.fa-square-o:before {content: "\f0c8" !important;}
+.fa-trash-o:before {content: "\f1f8";}
+.fa-map-o:before {content: "\f279";}
+.fa-chevron-right:before {content: "\f054";}
+.fa-chevron-down:before {content: "\f078";}
+.fa-arrows:before {content: "\f0b2";}
+.fa-arrows:before {content: "\f0b2";}
+.fa-share-alt[title="Group Social"]:before {
+    content: "\f1e1";
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 30px;
+    margin-top: calc(50% - 30px);
+}
+.fa-share-alt:before {
+    content: "\f1e0";
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 30px;
+    margin-top: calc(50% - 30px);
+}
+.fa-arrows-v:before {
+    content: "\f07d";
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 30px;
+    margin-top: calc(50% - 30px);
+}
+.fa-bars:before {
+    content: "\f0c9";
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 30px;
+    margin-top: calc(50% - 30px);
+}
+.fa-html5:before {
+    content: "\f13b";
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 30px;
+    margin-top: calc(50% - 30px);
+}
+.fa-link:before {
+    content: "\f0c1";
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 30px;
+    margin-top: calc(50% - 30px);
+}
+.fa-youtube-play:before {
+    content: "\f04b";
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 30px;
+    margin-top: calc(50% - 30px);
+}
+.fa-quote-right:before {
+    content: "\f10e";
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 30px;
+    margin-top: calc(50% - 30px);
+}

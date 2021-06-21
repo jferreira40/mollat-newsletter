@@ -65,6 +65,7 @@ if($params[0] != "") {
     <title>Administration - Mollat</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />-->
     <link rel="stylesheet" href="<?php echo ROOT ?>assets/css/sidebars.css">
     <link rel="stylesheet" type="text/css" href="<?php echo ROOT ?>assets/css/styles.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo ROOT ?>assets/css/editor.css" />
@@ -77,6 +78,7 @@ if($params[0] != "") {
     <script src="<?php echo ROOT ?>assets/grapesjs/modules/grapesjs-mjml.min.js"></script>
     <script src="<?php echo ROOT ?>assets/grapesjs/modules/grapesjs-preset-webpage.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo ROOT ?>assets/css/fa-fix.css" />
 </head>
 
 <body>
