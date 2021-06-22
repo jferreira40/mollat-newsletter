@@ -8,7 +8,7 @@ const editor = grapesjs.init({
   height: '60vh',
   width: '100%',
   storageManager: {
-    autosave: true,
+    autosave: false,
     autoload: false,
     stepsBeforeSave: 5,
   },
