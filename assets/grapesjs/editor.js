@@ -13,6 +13,7 @@ const editor = grapesjs.init({
     stepsBeforeSave: 5,
   }
 })
+const blockManager = editor.BlockManager
 
 async function mollatParseLatestFavorites () {
   const parsedResult = mockedData.map(({ title, seo, media, header, price }) => {
@@ -97,8 +98,6 @@ async function domReadyFavorites () {
 }
 
 function paintFavorites (content) {
-  const blockManager = editor.BlockManager
-
   blockManager.add('Nos coups de coeur', {
     label: 'Coups de coeur',
     content,
@@ -109,3 +108,64 @@ function paintFavorites (content) {
 }
 
 domReadyFavorites()
+
+
+function mollatParseLatestEvents () {
+  mockedEvents.length = 5
+
+  const wrapperItem = document.createElement('mj-wrapper')
+
+  mockedEvents.forEach(({ thumbnail, title, date, summary }) => {
+    const sectionItem = document.createElement('mj-section')
+
+    const column1 = document.createElement('mj-column')
+    const column2 = document.createElement('mj-column')
+
+    const imageItem = document.createElement('img')
+    imageItem.src = thumbnail
+    imageItem.style.maxWidth = '100%'
+    imageItem.style.maxHeight = '100%'
+
+    column1.append(imageItem)
+
+    const titleItem = document.createElement('mj-text')
+    titleItem.textContent = title
+    titleItem.style.textTransform = 'uppercase'
+    titleItem.style.fontWeight = 800
+    titleItem.style.fontSize = '20px'
+
+    const dateItem = document.createElement('mj-text')
+    dateItem.textContent = date
+    dateItem.style.color = '#001689'
+    dateItem.style.fontSize = '20px'
+
+    const summaryItem = document.createElement('mj-text')
+    summaryItem.textContent = summary
+
+    const buttonItem = document.createElement('mj-button')
+    buttonItem.textContent = 'Découvrir'
+    buttonItem.style.textTransform = 'uppercase'
+    buttonItem.style.backgroundColor = '#001689'
+    buttonItem.style.borderRadius = 0
+
+    column2.append(titleItem, dateItem, summaryItem, buttonItem)
+
+    sectionItem.append(column1, column2)
+    wrapperItem.append(sectionItem)
+  })
+
+  paintFiveLastEvents(wrapperItem.outerHTML)
+}
+
+
+function paintFiveLastEvents (content) {
+  blockManager.add('5 Events', {
+    label: '5 Events',
+    content,
+    attributes: {
+      class: 'fa fa-calendar'
+    }
+  })
+}
+
+mollatParseLatestEvents()
