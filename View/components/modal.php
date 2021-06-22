@@ -8,9 +8,15 @@
                 <p>Voulez vous vraiment supprimer cet élément ?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">Close</button>
                 <a href="" id="delete-url" class="btn btn-danger">Supprimer</a>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    document.querySelector('#modal .btn-close').addEventListener('click', (el) => {
+        el.target.closest('#modal').style.display = 'none'
+    })
+</script>
