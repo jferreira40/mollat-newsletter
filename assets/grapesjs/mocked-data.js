@@ -48,7 +48,8 @@ const mockedData =  [
         "name": "étymologie",
         "url": "etymologie"
       }
-    ]
+    ],
+    'price': '26€'
   },
   {
     "id": 147547,
@@ -79,7 +80,8 @@ const mockedData =  [
         "name": "Végétarien",
         "url": "vegetarien"
       }
-    ]
+    ],
+    'price': '24€'
   },
   {
     "id": 147526,
@@ -106,7 +108,8 @@ const mockedData =  [
         "name": "coup de coeur",
         "url": "coup-de-coeur"
       }
-    ]
+    ],
+    'price': '25€'
   },
   {
     "id":147522,
@@ -137,6 +140,7 @@ const mockedData =  [
           "name":"Etats-unis",
           "url":"etats-unis"
        }
-    ]
+    ],
+    'price': '20€'
  }
 ]

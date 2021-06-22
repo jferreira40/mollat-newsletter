@@ -11,20 +11,21 @@ const editor = grapesjs.init({
     autosave: false,
     autoload: false,
     stepsBeforeSave: 5,
-  },
+  }
 })
 
 async function mollatParseLatestFavorites () {
-  const parsedResult = mockedData.map(({ title, seo, media, header }) => {
+  const parsedResult = mockedData.map(({ title, seo, media, header, price }) => {
     return {
       title,
       seo,
       mediaUrl: media?.url_upload,
-      header
+      header,
+      price
     }
   })
 
-  parsedResult.length = 4
+  parsedResult.length = 3
 
   return parsedResult
 }
@@ -34,12 +35,16 @@ async function domReadyFavorites () {
 
   const wrapperItem = document.createElement('mj-wrapper')
 
-  parsedFavorites.forEach(async ({ title, seo, mediaUrl, header }, i) => {
+  parsedFavorites.forEach(async ({ title, seo, mediaUrl, header, price }, i) => {
     const sectionItem = document.createElement('mj-section')
 
     const column1 = document.createElement('mj-column')
     const column2 = document.createElement('mj-column')
     const column3 = document.createElement('mj-column')
+
+    column1.setAttribute('width', '40px')
+    column2.setAttribute('width', '100px')
+    column3.setAttribute('width', '400px')
 
     const counterItem = document.createElement('p')
     counterItem.textContent = i + 1
@@ -48,6 +53,7 @@ async function domReadyFavorites () {
     counterItem.style.width = '6px'
     counterItem.style.padding = '12px'
     counterItem.style.display = 'inline'
+    counterItem.style.fontFamily = 'Tahoma, sans-serif'
     column1.append(counterItem)
 
     const imageItem = document.createElement('img')
@@ -56,21 +62,32 @@ async function domReadyFavorites () {
     column2.append(imageItem)
 
     const titleItem = document.createElement('mj-text')
+    const priceItem = document.createElement('mj-text')
     const chapoItem = document.createElement('mj-text')
     const buttonItem = document.createElement('mj-button')
 
     titleItem.textContent = title
-    titleItem.style.color = '#001689'
     titleItem.style.fontSize = '22px'
-    titleItem.style.fontWeight = 800
-    titleItem.style.paddingTop = '30px'
+    titleItem.style.fontWeight = 600
+    titleItem.style.textTransform = 'uppercase'
+    titleItem.style.fontFamily = 'Tahoma, sans-serif'
+
+    priceItem.textContent = price
+    priceItem.style.padding = '0 25px'
+    priceItem.style.color = '#001689'
+    priceItem.style.fontSize = '22px'
+    priceItem.style.fontWeight = 600
+    priceItem.style.fontFamily = 'Tahoma, sans-serif'
+
 
     chapoItem.textContent = header
+    chapoItem.style.fontFamily = 'Tahoma, sans-serif'
 
     buttonItem.textContent = 'Découvrir'
     buttonItem.style.backgroundColor = '#001689'
+    buttonItem.style.fontFamily = 'Tahoma, sans-serif'
 
-    column3.append(titleItem, chapoItem, buttonItem)
+    column3.append(titleItem, priceItem, chapoItem, buttonItem)
 
     sectionItem.append(column1, column2, column3)
     wrapperItem.append(sectionItem)
