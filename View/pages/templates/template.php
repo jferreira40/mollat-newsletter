@@ -52,6 +52,18 @@
         </form>
     <?php endif; ?>
 </div>
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; bottom: 1rem; left: 1rem; z-index: 9">
+    <div class="toast-header" style="background-color: #218838; color: #fff">
+        <img src="<?php echo ROOT ?>assets/images/favicon.ico" class="rounded mr-2" alt="Mollat" style="width: 18px">
+        <strong class="mr-auto">
+            Le template a bien été crée / modifié !
+        </strong>
+        <small class="text-muted"></small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {

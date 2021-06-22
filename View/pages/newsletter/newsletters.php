@@ -23,7 +23,7 @@
                     echo "<td>".$newsletter['title']."</td>";
                     echo "<td class='text-right'><a href='$link_edit' class='btn'><i class='fas fa-pen-square'></i></a>";
                     echo "<a href='$link_replicate' class='btn'><i class='fas fa-copy'></i></a>";
-                    echo "<button class='btn delete' data-url=".$link_destroy."><i class='fas fa-trash'></i></button></td>";
+                    echo "<button class='btn delete' data-url=".$link_destroy." data-toggle='modal' data-target='#modal'><i class='fas fa-trash'></i></button></td>";
                     echo "</tr>";
                 }
             }
