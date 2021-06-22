@@ -28,11 +28,11 @@
                     <button id="apply_template" class="btn btn-warning">Appliquer</button>
                 </div>
             </div>
-            <div id="gjs">
-                <?php echo $news['content'] ?>
-            </div>
             <div class="col-12 mt-2 text-right">
                 <button id="save_newsletter" type="submit" class="btn btn-success">Modifier</button>
+            </div>
+            <div id="gjs">
+                <?php echo $news['content'] ?>
             </div>
         </form>
     <?php else : ?>
@@ -61,13 +61,13 @@
                     <button id="apply_template" class="btn btn-warning">Appliquer</button>
                 </div>
             </div>
+            <div class="col-12 mt-2 text-right">
+                <button id="save_new_newsletter" type="submit" class="btn btn-success">Enregistrer</button>
+            </div>
             <div id="gjs">
                 <mjml><mj-body><mj-section><mj-column>
                     <mj-text>Nouvelle newsletter</mj-text>
                 </mj-column></mj-section></mj-body></mjml>
-            </div>
-            <div class="col-12 mt-2 text-right">
-                <button id="save_new_newsletter" type="submit" class="btn btn-success">Enregistrer</button>
             </div>
         </form>
     <?php endif; ?>

@@ -18,11 +18,11 @@
                             aria-describedby="input_temp_name">
                 </div>
             </div>
-            <div id="gjs">
-                <?php echo $template['content'] ?>
-            </div>
             <div class="col-12 mt-2 text-right">
                 <button id="save_template" type="submit" class="btn btn-success">Modifier</button>
+            </div>
+            <div id="gjs">
+                <?php echo $template['content'] ?>
             </div>
         </form>
     <?php else : ?>
@@ -41,14 +41,15 @@
                             aria-describedby="input_temp_name">
                 </div>
             </div>
+            <div class="col-12 mt-2 text-right">
+                <button id="save_new_template" type="submit" class="btn btn-success">Enregistrer</button>
+            </div>
             <div id="gjs">
                 <mjml><mj-body><mj-section><mj-column>
                     <mj-text>Nouveau template</mj-text>
                 </mj-column></mj-section></mj-body></mjml>
             </div>
-            <div class="col-12 mt-2 text-right">
-                <button id="save_new_template" type="submit" class="btn btn-success">Enregistrer</button>
-            </div>
+
         </form>
     <?php endif; ?>
 </div>
