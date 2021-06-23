@@ -152,6 +152,7 @@ function mollatParseLatestEvents () {
     buttonItem.textContent = 'Découvrir'
     buttonItem.style.backgroundColor = '#001689'
     buttonItem.style.borderRadius = 0
+    buttonItem.style.padding = '10px 25px'
     buttonItem.style.fontFamily = 'Tahoma, sans-serif'
     buttonItem.setAttribute('align', 'left')
 
@@ -206,23 +207,18 @@ function prepareFolderColumn ({ thumbnail, title, chapo, tags }) {
   chapoItem.style.fontFamily = 'Tahoma, sans-serif'
   columnArray.push(chapoItem)
 
-  const tagsSectionItem = document.createElement('mj-wrapper')
+  const tagsItem = document.createElement('mj-text')
+  tagsItem.style.fontStyle = 'italic'
+  console.log(tags)
+  tagsItem.textContent = tags.toString()
+  columnArray.push(tagsItem)
 
-  for (const tag of tags) {
-    const tagItem = document.createElement('mj-button')
-    tagItem.textContent = tag
-    tagItem.style.border = '1px solid'
-    tagItem.style.fontSize = '10px'
-    tagItem.style.borderRadius = 0
-    tagItem.style.backgroundColor = '#ffffff'
-    tagItem.style.color = '#121212'
-    tagItem.style.padding = '3px 12px'
-    tagItem.style.fontFamily = 'Tahoma, sans-serif'
-    tagItem.setAttribute('align', 'left')
-    tagsSectionItem.append(tagItem)
-  }
-
-  columnArray.push(tagsSectionItem)
+  const buttonItem = document.createElement('mj-button')
+  buttonItem.textContent = 'Découvrir'
+  buttonItem.style.borderRadius = 0
+  buttonItem.style.backgroundColor = '#001689'
+  buttonItem.style.padding = '10px 25px'
+  columnArray.push(buttonItem)
 
   return columnArray
 }
@@ -245,14 +241,6 @@ function paintLatestFolders ([folder1, folder2]) {
   const subSectionItem = document.createElement('mj-section')
   subSectionItem.append(column1, column2, column3)
   wrapperItem.append(subSectionItem)
-
-  const buttonItem = document.createElement('mj-button')
-  buttonItem.textContent = 'Découvrir'
-  buttonItem.style.borderRadius = 0
-  buttonItem.style.backgroundColor = '#001689'
-  buttonItem.style.padding = '10px 25px'
-  buttonItem.style.fontFamily = 'Tahoma, sans-serif'
-  wrapperItem.append(buttonItem)
 
   const content = wrapperItem.outerHTML
 
