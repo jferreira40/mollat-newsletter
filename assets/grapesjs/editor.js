@@ -210,7 +210,6 @@ function prepareFolderColumn ({ thumbnail, title, chapo, tags }) {
 
   const tagsItem = document.createElement('mj-text')
   tagsItem.style.fontStyle = 'italic'
-  console.log(tags)
   tagsItem.textContent = tags.toString()
   columnArray.push(tagsItem)
 
