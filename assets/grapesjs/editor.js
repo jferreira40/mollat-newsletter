@@ -13,6 +13,7 @@ const editor = grapesjs.init({
     stepsBeforeSave: 5,
   }
 })
+
 const blockManager = editor.BlockManager
 
 async function mollatParseLatestFavorites () {
@@ -168,7 +169,6 @@ function paintFiveLastEvents (content) {
 
 mollatParseLatestEvents()
 
-
 function mollatParseLatestFolders () {
   mockedFolders.length = 2
 
@@ -245,3 +245,63 @@ function paintLatestFolders ([folder1, folder2]) {
 }
 
 mollatParseLatestFolders()
+
+
+function paintLatestEvent () {
+  const [{ thumbnail, title, date, summary }] = mockedEvents
+
+  const wrapperItem = document.createElement('mj-wrapper')
+
+  const column1 = document.createElement('mj-column')
+  const column2 = document.createElement('mj-column')
+  const column3 = document.createElement('mj-column')
+
+  const imageItem = document.createElement('img')
+  imageItem.src = thumbnail
+  imageItem.style.maxWidth = '100%'
+  imageItem.style.maxHeight = '100%'
+
+  column1.append(imageItem)
+  column1.style.width = '49%'
+
+  column2.style.width = '2%'
+
+  const titleItem = document.createElement('mj-text')
+  const dateItem = document.createElement('mj-text')
+  const chapoItem = document.createElement('mj-text')
+  const buttonItem = document.createElement('mj-button')
+
+  titleItem.textContent = title
+  titleItem.style.fontSize = '20px'
+  titleItem.style.fontWeight = 800
+  titleItem.style.textTransform = 'uppercase'
+
+  dateItem.textContent = date
+  dateItem.style.fontSize = '18px'
+  dateItem.style.color = '#001689'
+
+  chapoItem.textContent = summary
+
+  buttonItem.textContent = 'Découvrir'
+  buttonItem.style.borderRadius = 0
+  buttonItem.style.backgroundColor = '#001689'
+  buttonItem.style.padding = '10px 25px'
+  buttonItem.setAttribute('align', 'left')
+
+  column3.append(titleItem, dateItem, chapoItem, buttonItem)
+  column3.style.width = '49%'
+
+  wrapperItem.append(column1, column2, column3)
+
+  const content = wrapperItem.outerHTML
+
+  blockManager.add('Latest Event', {
+    label: 'Latest Event',
+    content,
+    attributes: {
+      class: 'fa fa-calendar-check'
+    }
+  })
+}
+
+paintLatestEvent()
