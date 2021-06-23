@@ -60,7 +60,8 @@ function domReadyFavorites () {
 
     const imageItem = document.createElement('img')
     imageItem.src = 'data:image/jpeg;base64,' + mediaUrl
-    imageItem.style.width = "100%"
+    imageItem.style.maxWidth = '100%'
+    imageItem.style.maxHeight = '100%'
     column2.append(imageItem)
 
     const titleItem = document.createElement('mj-text')
