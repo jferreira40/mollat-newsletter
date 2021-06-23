@@ -38,6 +38,7 @@ class NewsletterController extends Controller {
     public function store () {
         $dataToStore = $_POST;
         $dataToStore['content'] = preg_replace( "/\r|\n/", "", $dataToStore['content']);
+        $dataToStore['style'] = $dataToStore['style'];
 
         $Newsletter = new Newsletter();
         $new_Newsletter = $Newsletter->store($dataToStore);
@@ -48,6 +49,7 @@ class NewsletterController extends Controller {
     public function update (int $id) {
         $updatedData = $_POST;
         $updatedData['content'] = preg_replace( "/\r|\n/", "", $updatedData['content']);
+        $updatedData['style'] = $updatedData['style'];
 
         $Newsletter = new Newsletter($id);
         $updated_Newsletter = $Newsletter->update($updatedData);

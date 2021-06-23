@@ -1,5 +1,6 @@
 const editor = grapesjs.init({
   container: '#gjs',
+  overwriteExport: false,
   plugins: ['grapesjs-mjml'],
   pluginsOpts: {
     'grapesjs-mjml': {

@@ -17,19 +17,21 @@ class Newsletter extends Model
     }
 
     public function update ($data) {
-        $sql = "UPDATE ".$this->table." SET title=:title, content=:content WHERE id=".$this->id;
+        $sql = "UPDATE ".$this->table." SET title=:title, content=:content, style=:style WHERE id=".$this->id;
         $query = $this->_connexion->prepare($sql);
         $query->bindParam(':title', $data['title']);
         $query->bindParam(':content', $data['content']);
+        $query->bindParam(':style', $data['style']);
         $query->execute();
         return $query->rowCount();
     }
 
     public function store ($data) {
-        $sql = "INSERT INTO ".$this->table." (title, content) VALUES (:title, :content)";
+        $sql = "INSERT INTO ".$this->table." (title, content, style) VALUES (:title, :content, :style)";
         $query = $this->_connexion->prepare($sql);
         $query->bindParam(':title', $data['title']);
         $query->bindParam(':content',  $data['content']);
+        $query->bindParam(':style',  $data['style']);
         $query->execute();
 
         return $this->_connexion->lastInsertId();
@@ -39,10 +41,12 @@ class Newsletter extends Model
         $NewsletterReference = $this->getOne();
         $newTitle = $NewsletterReference['title'].' (copie)';
         $newContent = $NewsletterReference['content'];
-        $sql = "INSERT INTO ".$this->table." (title, content) VALUES (:title, :content)";
+        $newStyle = $NewsletterReference['style'];
+        $sql = "INSERT INTO ".$this->table." (title, content, style) VALUES (:title, :content, :style)";
         $query = $this->_connexion->prepare($sql);
         $query->bindParam(':title', $newTitle);
         $query->bindParam(':content', $newContent);
+        $query->bindParam(':style', $newStyle);
         $query->execute();
 
         return $this->_connexion->lastInsertId();

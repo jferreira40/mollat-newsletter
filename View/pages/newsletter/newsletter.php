@@ -36,6 +36,7 @@
             </div>
             <div id="gjs">
                 <?php echo $news['content'] ?>
+                <style><?php echo $news['style'] ?></style>
             </div>
         </form>
     <?php else : ?>
@@ -99,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (selectedTemplateID != 0) {
             const templates = <?php echo json_encode($templates); ?>;
             const selectedTemplate = templates.filter(template => template.id == selectedTemplateID)[0]
-            editor.setComponents(selectedTemplate.content)
+            editor.setComponents(selectedTemplate.content+'<style>'+selectedTemplate.style+'</style>')
         } else alert('Merci de sélectionner un template.')
     });
     <?php if(isset($news) && $news['content']) : ?>
@@ -109,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const newsID = <?php echo $news['id'] ?>;
         const newsTitle = document.getElementById('news_title').value
         const newsContent = editor.getHtml()
+        const newsStyle = editor.getCss()
 
         if (newsTitle.trim().length < 1 ||
             newsContent.trim().length < 1
@@ -119,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let formData = new FormData();
         formData.append('title', newsTitle);
         formData.append('content', newsContent);
+        formData.append('style', newsStyle);
 
         fetch(`${rootPath}newsletter/update/${newsID}`, {
                 body: formData,
@@ -140,6 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const rootPath = <?php echo json_encode(ROOT) ?>;
         const newsTitle = document.getElementById('news_title').value
         const newsContent = editor.getHtml()
+        const newsStyle = editor.getCss()
 
         if (newsTitle.trim().length < 1 ||
             newsContent.trim().length < 1
@@ -150,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let formData = new FormData();
         formData.append('title', newsTitle);
         formData.append('content', newsContent);
+        formData.append('style', newsStyle);
 
         fetch(`${rootPath}newsletter/store`, {
                 body: formData,
