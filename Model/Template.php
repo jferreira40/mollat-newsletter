@@ -17,19 +17,21 @@ class Template extends Model
     }
 
     public function update ($data) {
-        $sql = "UPDATE ".$this->table." SET name=:name, content=:content WHERE id=".$this->id;
+        $sql = "UPDATE ".$this->table." SET name=:name, content=:content, style=:style WHERE id=".$this->id;
         $query = $this->_connexion->prepare($sql);
         $query->bindParam(':name', $data['name']);
         $query->bindParam(':content', $data['content']);
+        $query->bindParam(':style', $data['style']);
         $query->execute();
         return $query->rowCount();
     }
 
     public function store ($data) {
-        $sql = "INSERT INTO ".$this->table." (name, content) VALUES (:name, :content)";
+        $sql = "INSERT INTO ".$this->table." (name, content, style) VALUES (:name, :content, :style)";
         $query = $this->_connexion->prepare($sql);
         $query->bindParam(':name', $data['name']);
         $query->bindParam(':content',  $data['content']);
+        $query->bindParam(':style',  $data['style']);
         $query->execute();
 
         return $this->_connexion->lastInsertId();
@@ -39,10 +41,12 @@ class Template extends Model
         $TemplateReference = $this->getOne();
         $newName = $TemplateReference['name'].' (copie)';
         $newContent = $TemplateReference['content'];
-        $sql = "INSERT INTO ".$this->table." (name, content) VALUES (:name, :content)";
+        $newStyle = $TemplateReference['content'];
+        $sql = "INSERT INTO ".$this->table." (name, content, style) VALUES (:name, :content, :style)";
         $query = $this->_connexion->prepare($sql);
         $query->bindParam(':name', $newName);
         $query->bindParam(':content', $newContent);
+        $query->bindParam(':style', $newStyle);
         $query->execute();
 
         return $this->_connexion->lastInsertId();

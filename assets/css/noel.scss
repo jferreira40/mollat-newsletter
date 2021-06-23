@@ -1,0 +1,195 @@
+// Christmas font
+@font-face {
+  font-family: "Christmas";
+  src: url("./../fonts/christmas-regular.ttf") format("truetype");
+}
+
+// Nazare font
+@font-face {
+  font-family: "Nazare Regular";
+  src: url("./../fonts/nazare/Nazare-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Nazare Medium";
+  src: url("./../fonts/nazare/Nazare-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Nazare Light";
+  src: url("./../fonts/nazare/Nazare-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Nazare Heavy";
+  src: url("./../fonts/nazare/Nazare-Heavy.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Nazare SemiBold";
+  src: url("./../fonts/nazare/Nazare-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Nazare ExtraBold";
+  src: url("./../fonts/nazare/Nazare-ExtraBold.ttf") format("truetype");
+}
+
+// Global style
+.bg-bleu {background: #AEC6F7;}
+.bg-bleu-secondary {background: #E9F0FF;}
+.text-bleu-primary {color: #051583;}
+.text-bleu-secondary {color: #AEC6F7;}
+.text-christmas {font-family: Christmas, serif; padding: 1rem 1rem 0 0;}
+.text-nazare {font-family: "Nazare Regular", serif}
+.text-montserrat {font-family: 'Montserrat', sans-serif;}
+.title {font-size: 3vw}
+.subtitle {font-size: 2.5vw}
+.mollat_subtitle {
+  width: 100%;
+  transform: rotate(-10.78deg);
+  margin-left: -10%;
+  margin-bottom: 10%;
+}
+p {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1vw;
+}
+.intro_bg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1}
+button.btn_discover_popup {
+  font-size: 1vw;
+  padding: 14px 28px;
+  border-radius: 0;
+  background: black;
+  margin: auto;
+  text-align: center;
+  color: #fff;
+  &:hover {
+    color: #E9F0FF
+  }
+}
+
+body {
+  .bg_top {
+    position: fixed;
+    z-index: 998;
+    width: 100%;
+    height: auto;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+  .bg_left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 2.5%;
+    height: auto;
+    z-index: 999;
+  }
+  .bg_right {
+    position: fixed;
+    top: 0;
+    right: 0;
+    content: "";
+    width: 7.8%;
+    height: auto;
+    z-index: 999;
+  }
+}
+
+body {
+  width: 100%;
+  margin: auto;
+  .intro-container {
+    position: relative;
+    padding: 10% 5%;
+    z-index: 3;
+    .intro-content {
+      position: relative;
+      z-index: 5;
+      &:before {
+        position: absolute;
+        bottom: -26%;
+        left: 0;
+        content: "";
+        width: 50%;
+        height: 30%;
+        background: url(./../images/noel/Femme_boite.svg) no-repeat bottom;
+        background-size: contain;
+      }
+      &:after {
+        position: absolute;
+        bottom: -33%;
+        right: 0;
+        content: "";
+        width: 50%;
+        height: 74%;
+        background: url(./../images/noel/Gros_sapin.svg) no-repeat bottom;
+        background-size: contain;
+      }
+    }
+    h1 {max-width: 60%; margin: auto}
+    .intro_desc {max-width: 40%; margin: auto; font-weight: 300}
+    .given_book_taken {
+      position: relative;
+      margin: 8vw 0 4vw;
+      p {
+        position: relative;
+        max-width: 10%;
+        line-height: 1.2vw;
+        margin: auto;
+      }
+      img {
+        display: block;
+        width: 18vw;
+        margin: 3vw auto;
+      }
+    }
+    &:before {
+      //position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-color: #E9F0FF;
+      background-size: contain;
+    }
+    &:after {
+      position: absolute;
+      bottom: -10%;
+      left: 0;
+      right: 0;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: url(./../images/noel/Wave.svg) no-repeat bottom;
+      background-size: contain;
+      z-index: 1;
+    }
+  }
+
+  .aim_container {
+    position: relative;
+    margin: 6% 5%;
+    z-index: 1;
+    .discover_main {
+      margin-right: 5%;
+    }
+  }
+
+  .text-intro {
+    position: relative;
+    padding: 5% 15% 0 5%;
+  }
+
+  .parcours_container {
+    position: relative;
+    margin-top: -6.5%;
+    min-height: 1000px;
+    .bg_chemin {
+      position: absolute;
+      top: 0;
+      right: 25%;
+      width: 70%;
+      z-index: -1;
+    }
+  }
+}

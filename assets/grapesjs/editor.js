@@ -2,7 +2,9 @@ const editor = grapesjs.init({
   container: '#gjs',
   plugins: ['grapesjs-mjml'],
   pluginsOpts: {
-    'grapesjs-mjml': {/* ...options */ }
+    'grapesjs-mjml': {
+      overwriteExport: false
+    }
   },
   fromElement: true,
   height: '60vh',

@@ -26,6 +26,9 @@
             </div>
             <div id="gjs">
                 <?php echo $template['content'] ?>
+                <style>
+                    <?php echo $template['style'] ?>
+                </style>
             </div>
         </form>
     <?php else : ?>
@@ -81,6 +84,7 @@
             const templateID = <?php echo $template['id'] ?>;
             const templateName = document.getElementById('temp_name').value
             const templateContent = editor.getHtml()
+            const templateStyle = editor.getCss()
 
             if (templateName.trim().length < 1 ||
                 templateContent.trim().length < 1
@@ -91,6 +95,7 @@
             let formData = new FormData();
             formData.append('name', templateName);
             formData.append('content', templateContent);
+            formData.append('style', templateStyle);
 
             fetch(`${rootPath}templates/update/${templateID}`, {
                 body: formData,
@@ -111,6 +116,7 @@
             const rootPath = <?php echo json_encode(ROOT) ?>;
             const templateName = document.getElementById('temp_name').value
             const templateContent = editor.getHtml()
+            const templateStyle = editor.getCss()
 
             if (templateName.trim().length < 1 ||
                 templateContent.trim().length < 1
@@ -121,6 +127,7 @@
             let formData = new FormData();
             formData.append('name', templateName);
             formData.append('content', templateContent);
+            formData.append('style', templateStyle);
 
             fetch(`${rootPath}templates/store`, {
                 body: formData,
