@@ -56,6 +56,10 @@
             <div class="col-12 mb-2 text-right">
                 <button id="save_page" type="submit" class="btn btn-success">Enregistrer</button>
             </div>
+
+            <div class="alert alert-danger mt-5 mb-2" role="alert">
+                Pour tout ajout d'images, les images doivent déjà être en ligne.
+            </div>
             <div id="gjs_page">
                 <?php echo $page['content'] ?>
                 <style><?php echo $page['style'] ?></style>
@@ -112,11 +116,14 @@
                     aria-label="Meta description de la page"
                     aria-describedby="input_page_description"></textarea>
             </div>
-            <div id="gjs_page">
-                <h2>Nouvelle page</h2>
-            </div>
             <div class="col-12 mt-2 text-right">
                 <button id="save_new_page" type="submit" class="btn btn-success">Enregistrer</button>
+            </div>
+            <div class="alert alert-danger mt-5 mb-2" role="alert">
+                Pour tout ajout d'images, les images doivent déjà être en ligne.
+            </div>
+            <div id="gjs_page">
+                <h2>Nouvelle page</h2>
             </div>
         </form>
     <?php endif; ?>
