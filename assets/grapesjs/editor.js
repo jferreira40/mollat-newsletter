@@ -13,9 +13,10 @@ const editor = grapesjs.init({
     stepsBeforeSave: 5,
   }
 })
+
 const blockManager = editor.BlockManager
 
-async function mollatParseLatestFavorites () {
+function mollatParseLatestFavorites () {
   const parsedResult = mockedData.map(({ title, seo, media, header, price }) => {
     return {
       title,
@@ -31,12 +32,12 @@ async function mollatParseLatestFavorites () {
   return parsedResult
 }
 
-async function domReadyFavorites () {
-  const parsedFavorites = await mollatParseLatestFavorites()
+function domReadyFavorites () {
+  const parsedFavorites = mollatParseLatestFavorites()
 
   const wrapperItem = document.createElement('mj-wrapper')
 
-  parsedFavorites.forEach(async ({ title, seo, mediaUrl, header, price }, i) => {
+  parsedFavorites.forEach(({ title, seo, mediaUrl, header, price }, i) => {
     const sectionItem = document.createElement('mj-section')
 
     const column1 = document.createElement('mj-column')
@@ -76,7 +77,7 @@ async function domReadyFavorites () {
     priceItem.textContent = price
     priceItem.style.padding = '0 25px'
     priceItem.style.color = '#001689'
-    priceItem.style.fontSize = '22px'
+    priceItem.style.fontSize = '16px'
     priceItem.style.fontWeight = 600
     priceItem.style.fontFamily = 'Tahoma, sans-serif'
 
@@ -86,7 +87,10 @@ async function domReadyFavorites () {
 
     buttonItem.textContent = 'Découvrir'
     buttonItem.style.backgroundColor = '#001689'
+    buttonItem.style.borderRadius = 0
+    buttonItem.style.padding = '10px 25px'
     buttonItem.style.fontFamily = 'Tahoma, sans-serif'
+    buttonItem.setAttribute('align', 'left')
 
     column3.append(titleItem, priceItem, chapoItem, buttonItem)
 
@@ -132,20 +136,25 @@ function mollatParseLatestEvents () {
     titleItem.style.textTransform = 'uppercase'
     titleItem.style.fontWeight = 800
     titleItem.style.fontSize = '20px'
+    titleItem.style.fontFamily = 'Tahoma, sans-serif'
 
     const dateItem = document.createElement('mj-text')
     dateItem.textContent = date
     dateItem.style.color = '#001689'
     dateItem.style.fontSize = '20px'
+    dateItem.style.fontFamily = 'Tahoma, sans-serif'
 
     const summaryItem = document.createElement('mj-text')
     summaryItem.textContent = summary
+    summaryItem.style.fontFamily = 'Tahoma, sans-serif'
 
     const buttonItem = document.createElement('mj-button')
     buttonItem.textContent = 'Découvrir'
-    buttonItem.style.textTransform = 'uppercase'
     buttonItem.style.backgroundColor = '#001689'
     buttonItem.style.borderRadius = 0
+    buttonItem.style.padding = '10px 25px'
+    buttonItem.style.fontFamily = 'Tahoma, sans-serif'
+    buttonItem.setAttribute('align', 'left')
 
     column2.append(titleItem, dateItem, summaryItem, buttonItem)
 
@@ -167,7 +176,6 @@ function paintFiveLastEvents (content) {
 }
 
 mollatParseLatestEvents()
-
 
 function mollatParseLatestFolders () {
   mockedFolders.length = 2
@@ -191,27 +199,26 @@ function prepareFolderColumn ({ thumbnail, title, chapo, tags }) {
   titleItem.style.textTransform = 'uppercase'
   titleItem.style.color = '#001689'
   titleItem.style.fontWeight = 800
+  titleItem.style.fontSize = '18px'
+  titleItem.style.fontFamily = 'Tahoma, sans-serif'
   columnArray.push(titleItem)
 
   chapoItem.textContent = chapo
+  chapoItem.style.fontFamily = 'Tahoma, sans-serif'
   columnArray.push(chapoItem)
 
-  const tagsSectionItem = document.createElement('mj-wrapper')
+  const tagsItem = document.createElement('mj-text')
+  tagsItem.style.fontStyle = 'italic'
+  console.log(tags)
+  tagsItem.textContent = tags.toString()
+  columnArray.push(tagsItem)
 
-  for (const tag of tags) {
-    const tagItem = document.createElement('mj-button')
-    tagItem.textContent = tag
-    tagItem.style.border = '1px solid'
-    tagItem.style.fontSize = '10px'
-    tagItem.style.borderRadius = 0
-    tagItem.style.backgroundColor = '#ffffff'
-    tagItem.style.color = '#121212'
-    tagItem.style.padding = '3px 12px'
-    tagItem.setAttribute('align', 'left')
-    tagsSectionItem.append(tagItem)
-  }
-
-  columnArray.push(tagsSectionItem)
+  const buttonItem = document.createElement('mj-button')
+  buttonItem.textContent = 'Découvrir'
+  buttonItem.style.borderRadius = 0
+  buttonItem.style.backgroundColor = '#001689'
+  buttonItem.style.padding = '10px 25px'
+  columnArray.push(buttonItem)
 
   return columnArray
 }
@@ -231,7 +238,9 @@ function paintLatestFolders ([folder1, folder2]) {
   column3.append(...prepareFolderColumn(folder2))
   column3.style.width = '49%'
 
-  wrapperItem.append(column1, column2, column3)
+  const subSectionItem = document.createElement('mj-section')
+  subSectionItem.append(column1, column2, column3)
+  wrapperItem.append(subSectionItem)
 
   const content = wrapperItem.outerHTML
 
@@ -245,3 +254,67 @@ function paintLatestFolders ([folder1, folder2]) {
 }
 
 mollatParseLatestFolders()
+
+
+function paintLatestEvent () {
+  const [{ thumbnail, title, date, summary }] = mockedEvents
+
+  const wrapperItem = document.createElement('mj-wrapper')
+
+  const column1 = document.createElement('mj-column')
+  const column2 = document.createElement('mj-column')
+  const column3 = document.createElement('mj-column')
+
+  const imageItem = document.createElement('img')
+  imageItem.src = thumbnail
+  imageItem.style.maxWidth = '100%'
+  imageItem.style.maxHeight = '100%'
+
+  column1.append(imageItem)
+  column1.style.width = '49%'
+
+  column2.style.width = '2%'
+
+  const titleItem = document.createElement('mj-text')
+  const dateItem = document.createElement('mj-text')
+  const chapoItem = document.createElement('mj-text')
+  const buttonItem = document.createElement('mj-button')
+
+  titleItem.textContent = title
+  titleItem.style.fontSize = '20px'
+  titleItem.style.fontWeight = 800
+  titleItem.style.textTransform = 'uppercase'
+  titleItem.style.fontFamily = 'Tahoma, sans-serif'
+
+  dateItem.textContent = date
+  dateItem.style.fontSize = '18px'
+  dateItem.style.color = '#001689'
+  dateItem.style.fontFamily = 'Tahoma, sans-serif'
+
+  chapoItem.textContent = summary
+  chapoItem.style.fontFamily = 'Tahoma, sans-serif'
+
+  buttonItem.textContent = 'Découvrir'
+  buttonItem.style.borderRadius = 0
+  buttonItem.style.backgroundColor = '#001689'
+  buttonItem.style.padding = '10px 25px'
+  buttonItem.style.fontFamily = 'Tahoma, sans-serif'
+  buttonItem.setAttribute('align', 'left')
+
+  column3.append(titleItem, dateItem, chapoItem, buttonItem)
+  column3.style.width = '49%'
+
+  wrapperItem.append(column1, column2, column3)
+
+  const content = wrapperItem.outerHTML
+
+  blockManager.add('Latest Event', {
+    label: 'Latest Event',
+    content,
+    attributes: {
+      class: 'fa fa-calendar-check'
+    }
+  })
+}
+
+paintLatestEvent()

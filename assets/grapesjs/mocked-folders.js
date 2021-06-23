@@ -17,6 +17,7 @@ const mockedFolders = [
       'Médecine',
       'Maladie',
       'Santé',
+      'Sciences Humaines'
     ]
   }
 ]
