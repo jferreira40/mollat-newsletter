@@ -109,7 +109,6 @@ function paintFavorites (content) {
 
 domReadyFavorites()
 
-
 function mollatParseLatestEvents () {
   mockedEvents.length = 5
 
@@ -157,7 +156,6 @@ function mollatParseLatestEvents () {
   paintFiveLastEvents(wrapperItem.outerHTML)
 }
 
-
 function paintFiveLastEvents (content) {
   blockManager.add('5 Events', {
     label: '5 Events',
@@ -169,3 +167,81 @@ function paintFiveLastEvents (content) {
 }
 
 mollatParseLatestEvents()
+
+
+function mollatParseLatestFolders () {
+  mockedFolders.length = 2
+
+  paintLatestFolders(mockedFolders)
+}
+
+function prepareFolderColumn ({ thumbnail, title, chapo, tags }) {
+  const thumbnailItem = document.createElement('img')
+  const titleItem = document.createElement('mj-text')
+  const chapoItem = document.createElement('mj-text')
+
+  const columnArray = []
+
+  thumbnailItem.src = thumbnail
+  thumbnailItem.style.maxHeight = '100%'
+  thumbnailItem.style.maxWidth = '100%'
+  columnArray.push(thumbnailItem)
+
+  titleItem.textContent = title
+  titleItem.style.textTransform = 'uppercase'
+  titleItem.style.color = '#001689'
+  titleItem.style.fontWeight = 800
+  columnArray.push(titleItem)
+
+  chapoItem.textContent = chapo
+  columnArray.push(chapoItem)
+
+  const tagsSectionItem = document.createElement('mj-wrapper')
+
+  for (const tag of tags) {
+    const tagItem = document.createElement('mj-button')
+    tagItem.textContent = tag
+    tagItem.style.border = '1px solid'
+    tagItem.style.fontSize = '10px'
+    tagItem.style.borderRadius = 0
+    tagItem.style.backgroundColor = '#ffffff'
+    tagItem.style.color = '#121212'
+    tagItem.style.padding = '3px 12px'
+    tagItem.setAttribute('align', 'left')
+    tagsSectionItem.append(tagItem)
+  }
+
+  columnArray.push(tagsSectionItem)
+
+  return columnArray
+}
+
+function paintLatestFolders ([folder1, folder2]) {
+  const wrapperItem = document.createElement('mj-wrapper')
+
+  const column1 = document.createElement('mj-column')
+  const column2 = document.createElement('mj-column')
+  const column3 = document.createElement('mj-column')
+
+  column1.append(...prepareFolderColumn(folder1))
+  column1.style.width = '49%'
+
+  column2.style.width = '2%'
+
+  column3.append(...prepareFolderColumn(folder2))
+  column3.style.width = '49%'
+
+  wrapperItem.append(column1, column2, column3)
+
+  const content = wrapperItem.outerHTML
+
+  blockManager.add('2 Folders', {
+    label: '2 Folders',
+    content,
+    attributes: {
+      class: 'fa fa-folder-open'
+    }
+  })
+}
+
+mollatParseLatestFolders()
