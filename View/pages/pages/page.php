@@ -48,13 +48,13 @@
                 <textarea
                     name="page_description"
                     id="page_description"
-                    placeholder="<?php echo $page['description'] ?>" value="<?php echo $page['description'] ?>"
+                    placeholder="<?php echo $page['description'] ?>"
                     class="form-control"
                     aria-label="Meta description de la page"
-                    aria-describedby="input_page_description"></textarea>
+                    aria-describedby="input_page_description"><?php echo $page['description'] ?></textarea>
             </div>
             <div class="col-12 mb-2 text-right">
-                <button id="save_page" type="submit" class="btn btn-success">Modifier</button>
+                <button id="save_page" type="submit" class="btn btn-success">Enregistrer</button>
             </div>
             <div id="gjs_page">
                 <?php echo $page['content'] ?>

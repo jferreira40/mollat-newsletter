@@ -76,7 +76,7 @@ if($params[0] != "") {
     <link rel="stylesheet" href="https://unpkg.com/grapesjs/dist/css/grapes.min.css">
     <script src="https://unpkg.com/grapesjs"></script>
     <script src="<?php echo ROOT ?>assets/grapesjs/modules/grapesjs-mjml/dist/grapesjs-mjml.min.js"></script>
-    <script src="<?php echo ROOT ?>assets/grapesjs/modules/grapesjs-preset-webpage.min.js"></script>
+    <script src="<?php echo ROOT ?>assets/grapesjs/modules/grapesjs-preset-webpage/dist/grapesjs-preset-webpage.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo ROOT ?>assets/css/fa-fix.css" />
 </head>
