@@ -21,8 +21,8 @@
             <div class="col-12 mt-2 text-right">
                 <button id="save_template" type="submit" class="btn btn-success">Modifier</button>
             </div>
-            <div class="alert alert-danger mt-5 mb-2" role="alert">
-                Pour tout ajout d'images, les images doivent déjà être en ligne.
+            <div class="alert alert-warning mt-5 mb-2" role="alert">
+                Chaque nouvelle image doit être insérée avec une URl suivant le format: https://www.site.com/mon-image
             </div>
             <div id="gjs">
                 <?php echo $template['content'] ?>
@@ -47,8 +47,8 @@
             <div class="col-12 mt-2 text-right">
                 <button id="save_new_template" type="submit" class="btn btn-success">Enregistrer</button>
             </div>
-            <div class="alert alert-danger mt-5 mb-2" role="alert">
-                Pour tout ajout d'images, les images doivent déjà être en ligne.
+            <div class="alert alert-warning mt-5 mb-2" role="alert">
+               Chaque nouvelle image doit être insérée avec une URl suivant le format: https://www.site.com/mon-image
             </div>
             <div id="gjs">
                 <mjml><mj-body><mj-section><mj-column>
