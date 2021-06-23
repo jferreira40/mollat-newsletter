@@ -5,7 +5,7 @@ const mockedData =  [
     "dateEvent": null,
     "title": "Abécédaire illustré des mots voyageurs...",
     "subtitle": null,
-    "header": "...flâneries étymologiques",
+    "header": "Remontez le cours de l'histoire des mots. Du docteur en linguistique ancienne Hugo Blanchet.",
     "text": "Remontez le cours de l\u0027histoire des mots aux c\u0026ocirc;t\u0026eacute;s du docteur en linguistique ancienne Hugo Blanchet avec ce bel ab\u0026eacute;c\u0026eacute;daire illustr\u0026eacute; par Anouck Ferri. Zenith, mousseline, abricot, luth ou cramoisi autant de mots de notre lexique enracin\u0026eacute;s dans d\u0027autres \u0026egrave;res langagi\u0026egrave;res et culturelles. Arpenter les multiples embranchements qui constituent leurs parcours jusqu\u0027\u0026agrave; nous, c\u0027est faire un voyage dans le temps et l\u0027espace et prendre conscience des interactions constantes qui ont\u0026nbsp;aliment\u0026eacute; le creuset de\u0026nbsp;notre langue et notre rapport au monde.\u003cbr /\u003eInde, Gr\u0026egrave;ce, Iran, terres vikings et latines...sont autant d\u0027espaces concrets et imaginaires qui\u0026nbsp;jalonnent ces \"fl\u0026acirc;neries \u0026eacute;tymologiques\" instructives, accessibles et d\u0026eacute;licatement illustr\u0026eacute;es.",
     "type": 6,
     "status": 6,

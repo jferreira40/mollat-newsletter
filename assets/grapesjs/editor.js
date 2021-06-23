@@ -225,6 +225,8 @@ function prepareFolderColumn ({ thumbnail, title, chapo, tags }) {
 
 function paintLatestFolders ([folder1, folder2]) {
   const wrapperItem = document.createElement('mj-wrapper')
+  wrapperItem.style.backgroundColor = '#EEEEF2'
+  wrapperItem.style.padding = '10px'
 
   const column1 = document.createElement('mj-column')
   const column2 = document.createElement('mj-column')
@@ -232,11 +234,13 @@ function paintLatestFolders ([folder1, folder2]) {
 
   column1.append(...prepareFolderColumn(folder1))
   column1.style.width = '49%'
+  column1.style.backgroundColor = '#ffffff'
 
   column2.style.width = '2%'
 
   column3.append(...prepareFolderColumn(folder2))
   column3.style.width = '49%'
+  column3.style.backgroundColor = '#ffffff'
 
   const subSectionItem = document.createElement('mj-section')
   subSectionItem.append(column1, column2, column3)
