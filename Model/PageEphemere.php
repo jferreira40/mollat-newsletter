@@ -15,10 +15,11 @@ class PageEphemere extends Model {
     }
 
     public function update ($data) {
-        $sql = "UPDATE ".$this->table." SET name=:name, content=:content, title=:title, description=:description, url=:url WHERE id=".$this->id;
+        $sql = "UPDATE ".$this->table." SET name=:name, content=:content, style=:style, title=:title, description=:description, url=:url WHERE id=".$this->id;
         $query = $this->_connexion->prepare($sql);
         $query->bindParam(':name', $data['name']);
         $query->bindParam(':content', $data['content']);
+        $query->bindParam(':style', $data['style']);
         $query->bindParam(':title', $data['title']);
         $query->bindParam(':description', $data['description']);
         $query->bindParam(':url', $data['url']);
@@ -27,10 +28,11 @@ class PageEphemere extends Model {
     }
 
     public function store ($data) {
-        $sql = "INSERT INTO ".$this->table." (name, content, title, description, url) VALUES (:name, :content, :title, :description, :url)";
+        $sql = "INSERT INTO ".$this->table." (name, content, style, title, description, url) VALUES (:name, :content, :style, :title, :description, :url)";
         $query = $this->_connexion->prepare($sql);
         $query->bindParam(':name', $data['name']);
         $query->bindParam(':content', $data['content']);
+        $query->bindParam(':style', $data['style']);
         $query->bindParam(':title', $data['title']);
         $query->bindParam(':description',  $data['description']);
         $query->bindParam(':url',  $data['url']);
@@ -42,10 +44,11 @@ class PageEphemere extends Model {
     public function replicate () {
         $PageReference = $this->getOne();
         $newName = $PageReference['name'].' (copie)';
-        $sql = "INSERT INTO ".$this->table." (name, content, title, description, url) VALUES (:name, :content, :title, :description, :url)";
+        $sql = "INSERT INTO ".$this->table." (name, content, style, title, description, url) VALUES (:name, :content, :style, :title, :description, :url)";
         $query = $this->_connexion->prepare($sql);
         $query->bindParam(':name', $newName);
         $query->bindParam(':content', $PageReference['content']);
+        $query->bindParam(':style', $PageReference['style']);
         $query->bindValue(':title', "");
         $query->bindValue(':description', "");
         $query->bindValue(':url', "");

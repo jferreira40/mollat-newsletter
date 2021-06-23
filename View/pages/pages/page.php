@@ -58,6 +58,7 @@
             </div>
             <div id="gjs_page">
                 <?php echo $page['content'] ?>
+                <style><?php echo $page['style'] ?></style>
             </div>
         </form>
     <?php else : ?>
@@ -145,6 +146,7 @@
             const pageDescription = document.getElementById('page_description').value
             const pageURL = document.getElementById('page_url').value
             const pageContent = PageEditor.getHtml()
+            const pageStyle = PageEditor.getCss()
 
             if (pageName.trim().length < 1 ||
                 pageContent.trim().length < 1
@@ -157,6 +159,7 @@
             formData.append('title', pageTitle);
             formData.append('description', pageDescription);
             formData.append('content', pageContent);
+            formData.append('style', pageStyle);
             formData.append('url', pageURL);
 
             fetch(`${rootPath}pages/update/${pageID}`, {
@@ -181,6 +184,7 @@
             const pageDescription = document.getElementById('page_description').value
             const pageURL = document.getElementById('page_url').value
             const pageContent = PageEditor.getHtml()
+            const pageStyle = PageEditor.getCss()
 
             if (pageName.trim().length < 1 ||
                 pageContent.trim().length < 1
@@ -193,6 +197,7 @@
             formData.append('title', pageTitle);
             formData.append('description', pageDescription);
             formData.append('content', pageContent);
+            formData.append('style', pageStyle);
             formData.append('url', pageURL);
 
             fetch(`${rootPath}pages/store`, {
