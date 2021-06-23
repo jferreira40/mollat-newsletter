@@ -31,7 +31,7 @@
             </div>
             <h4>SEO</h4>
             <div class="d-flex flex-row">
-                <div class="input-group w-25 input-group-md mb-3">
+                <div class="input-group w-50 input-group-md mb-3">
                     <span class="input-group-text" id="input_page_title">Title</span>
                     <input
                         type="text"
@@ -43,7 +43,7 @@
                         aria-describedby="input_page_title">
                 </div>
             </div>
-            <div class="input-group w-25 input-group-md mb-3">
+            <div class="input-group w-50 input-group-md mb-3">
                 <span class="input-group-text" id="input_page_description">Description</span>
                 <textarea
                     name="page_description"
@@ -90,7 +90,7 @@
             </div>
             <h4>SEO</h4>
             <div class="d-flex flex-row">
-                <div class="input-group w-25 input-group-md mb-3">
+                <div class="input-group w-50 input-group-md mb-3">
                     <span class="input-group-text" id="input_page_title">Title</span>
                     <input
                         type="text"
@@ -102,7 +102,7 @@
                         aria-describedby="input_page_title">
                 </div>
             </div>
-            <div class="input-group w-25 input-group-md mb-3">
+            <div class="input-group w-50 input-group-md mb-3">
                 <span class="input-group-text" id="input_page_description">Description</span>
                 <textarea
                     name="page_description"
