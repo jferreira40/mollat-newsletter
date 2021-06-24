@@ -377,3 +377,15 @@ function whishlist () {
   })
 }
 whishlist()
+
+
+function newsletterSubscribe () {
+  pageBlockManager.add('newsletter', {
+    label: 'Newsletter',
+    content: `<section style="display: flex; flex-direction: column; align-items: center; gap: 2vw; justify-content: center; background: #001689;padding:10vw;"> <h2 style="color: #fff;font-family: Lato, sans-serif;font-weight: 600;font-size: 2.5vw;">Inscrivez-vous à notre <br/> Newsletter ! </h2> <p style="font-family: Lato, sans-serif;font-size: 1vw;color:#fff;">Id at Lorem occaecat reprehenderit minim eu<br/> exercitation reprehenderit culpa.</p><form style="display: flex; gap: 1.4vw;"> <input type="email" name="" id="" placeholder="Votre adresse mail" style="font-family: Lato, sans-serif;border: none;width: 26vw; font-size: 1vw; padding: 1vw 2.5vw; line-height: initial;"> <button type="submit" style="font-weight: 800; font-size: 1vw; font-family: Lato, sans-serif;color: #001689;background: #fff;border: none;padding: 1vw 2.5vw;cursor: pointer;width: 12vw">S'inscrire</button> </form> </section>`,
+    attributes: {
+      class: 'fa fa-custom fa-newspaper-o'
+    }
+  })
+}
+newsletterSubscribe()
