@@ -51,9 +51,20 @@ p {
   font-size: 1.1vw;
 }
 .intro_bg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1}
+button.btn_discover {
+  font-size: 1vw;
+  padding: 0.6vw 1.4vw;
+  text-transform: uppercase;
+  border-radius: 0;
+  background: #AEC6F7;
+  color: #051483;
+  &:hover {
+    color: #E9F0FF
+  }
+}
 button.btn_discover_popup {
   font-size: 1vw;
-  padding: 14px 28px;
+  padding: 0.8vw 1vw;
   border-radius: 0;
   background: black;
   margin: auto;
@@ -90,6 +101,9 @@ body {
     width: 7.8%;
     height: auto;
     z-index: 999;
+  }
+  &.fixed_scroll {
+    overflow: hidden;
   }
 }
 
@@ -168,10 +182,13 @@ body {
 
   .aim_container {
     position: relative;
-    margin: 6% 5%;
+    margin-top: 8%;
+    padding-bottom: 10%;
     z-index: 1;
     .discover_main {
-      margin-right: 5%;
+      //margin-right: 5%;
+      max-height: none !important;
+      margin: 6% 10% 6% 5%;
     }
   }
 
@@ -182,24 +199,149 @@ body {
 
   .parcours_container {
     position: relative;
-    margin-top: -6.5%;
-    min-height: 1000px;
-    .parcours_overflow {
+    margin-top: -13vw;
+    //min-height: 100vh;
+    padding: 0 5%;
+    .parcours_item {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #fff;
-      z-index: 998;
-      opacity: 1;
+      cursor: pointer;
+      transition: all .25s ease-in-out;
+      &.active {
+        margin-top: -.5vw;
+        transform: scale(1.1);
+        z-index: 11;
+      }
     }
-    .bg_chemin {
+    #chemin {
       position: absolute;
       top: 0;
-      right: 25%;
-      width: 70%;
+      width: 76vw;
+      left: 13vw;
       z-index: -1;
+      object-fit: cover;
+    }
+    #createurs {
+      top: 13vw;
+      left: 27vw;
+      width: 23vw;
+    }
+    #vinchaud {
+      top: 23vw;
+      left: 7vw;
+      width: 23vw;
+    }
+    #ecrivains {
+      top: 48vw;
+      left: -2vw;
+      width: 23vw;
+    }
+    #mollatetvous {
+      top: 64vw;
+      left: 28vw;
+      width: 19vw;
+      padding-bottom: 5vw;
+    }
+    #ecrivains2 {
+      top: 62vw;
+      right: 13vw;
+      width: 28vw;
+    }
+    #concert {
+      top: 34vw;
+      right: 8vw;
+      width: 25vw;
+    }
+    #echanges {
+      top: 34vw;
+      right: 46vw;
+      width: 9.5vw;
     }
   }
+  #parcours_overflow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #616161;
+    opacity: .8;
+    z-index: 10;
+    transition: opacity .25s ease-in-out;
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  .modal-dialog {
+    width: 100%;
+    margin: 6vw auto 3vw;
+    min-height: calc(100% - 9vw);
+    max-height: 20vw;
+    max-width: 35vw;
+    .modal-content {
+      border: none;
+      border-radius: 0;
+      .modal-header {
+        padding: 4vw 3vw 1vw;
+        border: none;
+        p {
+          margin-bottom: 0;
+        }
+        .close {
+          position: absolute;
+          top: 0;
+          right: 1vw;
+          margin: 0;
+          padding: 0;
+          font-size: 4vw;
+          line-height: 0.8;
+          img {width: 1.2vw;}
+        }
+      }
+      .modal-body {
+        padding: 2vw 3vw 1vw;
+        p {
+          margin-bottom: 0;
+        }
+      }
+      .modal-footer {
+        padding: 2vw 0 2vw 3vw;
+        border: none;
+      }
+      .stand_title {
+        padding: 0.4vw 1vw 0.1vw;
+        font-weight: bold;
+        background-color: #F3BC54;
+      }
+      .stand_nb {
+        font-style: italic;
+        color: #001689
+      }
+      .modal_c_title {
+        font-style: italic;
+        color: #001689
+      }
+      .modal_c_subtitle {
+        font-weight: bold;
+        color: #001689
+      }
+      .modal_c_description {
+        margin-top: 1vw;
+        font-weight: 300;
+      }
+    }
+  }
+}
+
+#snowID {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+  z-index: 9;
+  pointer-events: none;
 }
