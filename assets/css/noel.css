@@ -225,6 +225,7 @@ body .aim_container {
   z-index: 1;
 }
 body .aim_container .discover_main {
+  height: auto;
   max-height: none !important;
   margin: 6% 10% 6% 5%;
 }
