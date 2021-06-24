@@ -343,3 +343,14 @@ function youthSelect () {
   })
 }
 youthSelect()
+
+function popStore () {
+  pageBlockManager.add('pop-store', {
+    label: 'pop-store',
+    content: ` <section style="background-image: url(../../assets/grapesjs/Banniere_popup.svg); background-size: contain; background-repeat: no-repeat; padding: 16vw 24vw; display: flex; flex-direction: column; gap: 1vw;"> <h2 style="font-family: Lato, sans-serif; color: #001689; font-weight: 600; font-size: 2.5vw;">Ouverture du pop-store</h2> <div style="display: flex; gap: 1vw;align-items: center;"> <img src="../../assets/grapesjs/pin_2.svg"> <p style="font-family: Lato, sans-serif">Station Ozonne</p><p style="text-transform: uppercase; background: #d2d9ff; color: #001689; padding: 6px 8px; font-family: Lato, sans-serif;font-size: .8vw; font-weight: 600; border-radius: 2px;"> Événement</p></div><p style="font-family: Lato, sans-serif; margin: 2em 0;">Mollat vous invite à découvrir son petit marché de <br/> Noël solidaire : stand, cadeaux et concerts <br/> acoustiques vous y attendent.</p><div style="display: flex; gap: 1vw; align-items: center;"> <button style="border: none; text-transform: uppercase; color: #fff; background: #001689; padding: 10px 25px; font-family: Lato, sans-serif">Découvrir</button> <img style="height: 100%; width: auto; object-fit: contain;" src="../../assets/grapesjs/facebook.svg"> </div></section>`,
+    attributes: {
+      class: 'fa fa-custom fa-fire'
+    }
+  })
+}
+popStore()
