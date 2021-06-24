@@ -220,6 +220,16 @@ body .parcours_container {
   margin-top: -6.5%;
   min-height: 1000px;
 }
+body .parcours_container .parcours_overflow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 998;
+  opacity: 1;
+}
 body .parcours_container .bg_chemin {
   position: absolute;
   top: 0;

@@ -41,7 +41,7 @@ class Template extends Model
         $TemplateReference = $this->getOne();
         $newName = $TemplateReference['name'].' (copie)';
         $newContent = $TemplateReference['content'];
-        $newStyle = $TemplateReference['content'];
+        $newStyle = $TemplateReference['style'];
         $sql = "INSERT INTO ".$this->table." (name, content, style) VALUES (:name, :content, :style)";
         $query = $this->_connexion->prepare($sql);
         $query->bindParam(':name', $newName);
