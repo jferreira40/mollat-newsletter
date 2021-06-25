@@ -3,12 +3,15 @@ session_start();
 
 include_once '_env.php';
 
-if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === 'www.localhost' || isset($HOST)) {
+if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === 'www.localhost') {
     $BASE_DIR = "$HOST";
-} else $BASE_DIR = 'https://'.$_SERVER['SERVER_NAME'];
+} else if (isset($HOST)) {
+    $BASE_DIR = $HOST;
+}
+else $BASE_DIR = 'https://'.$_SERVER['SERVER_NAME'];
 
 // On génère une constante contenant le chemin vers la racine publique du projet
-define('ROOT', 'http://'.str_replace('index.php','',$BASE_DIR.$_SERVER['SCRIPT_NAME']));
+define('ROOT', 'http://www.'.str_replace('index.php','',$BASE_DIR.$_SERVER['SCRIPT_NAME']));
 
 // On sépare les paramètres et on les met dans le tableau $params
 $params = explode('/', $_GET['p']);
